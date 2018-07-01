@@ -30,8 +30,6 @@ public class ButtonListener implements ActionListener {
 
 	public void actionPerformed(ActionEvent event) {
 		try {
-		int rowT = 0;
-		this.row = rowT;
 		String query = ("DELETE marque FROM vehicule WHERE row +"+this.row);
 		query += "DELETE moteur FROM vehicule WHERE row + "+this.row ;
 		query += "DELETE prix FROM vehicule WHERE row + "+this.row ;

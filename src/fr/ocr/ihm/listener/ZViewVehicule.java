@@ -30,15 +30,10 @@ public class ZViewVehicule extends JDialog{
 	}
 	private void initComponent() {
 		try {
-			Statement state = HsqldbConnection.getInstance().createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
-			String query = "SELECT * FROM vehicule ";
-			ResultSet result = state.executeQuery(query);
-
-			
-			
-			 
+			int idV = ViewDetailVehiculeListener.getID();	
+			DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
+		    Vehicule vehicule = vehiculeDao.find(idV);
+          		 
 			 
 		JPanel panView = new JPanel();
 		panView.setBackground(Color.getHSBColor(0.550f, 0.40f, 0.90f));
@@ -50,7 +45,7 @@ public class ZViewVehicule extends JDialog{
 		nom.setPreferredSize(new Dimension(220,55));
 		nom.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel nomVehicule = new JLabel();
-		nomVehicule.setText(result.getString("nom"));
+		nomVehicule.setText(vehicule.getNom());
 		nomVehicule.setBorder(BorderFactory.createTitledBorder(" Nom du Vehicule "));
 		nomVehicule.setPreferredSize(new Dimension(180,40));
         nomVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -60,7 +55,7 @@ public class ZViewVehicule extends JDialog{
 		marque.setPreferredSize(new Dimension(220,55));
 		marque.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel marqueVehicule = new JLabel();
-		marqueVehicule.setText("");
+		marqueVehicule.setText(" " + vehicule.getMarque());
 		marqueVehicule.setBorder(BorderFactory.createTitledBorder(" Marque du Vehicule "));
 		marqueVehicule.setPreferredSize(new Dimension(180,40));
         marqueVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -70,7 +65,7 @@ public class ZViewVehicule extends JDialog{
 		moteur.setPreferredSize(new Dimension(300,55));
 		moteur.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel moteurVehicule = new JLabel();
-		moteurVehicule.setText("test");
+		moteurVehicule.setText(" "+ vehicule.getMoteur());
 		moteurVehicule.setBorder(BorderFactory.createTitledBorder(" Type de moteur du vehicule "));
 		moteurVehicule.setPreferredSize(new Dimension(250,40));
         moteurVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -80,7 +75,7 @@ public class ZViewVehicule extends JDialog{
 		prix.setPreferredSize(new Dimension(300,55));
 		prix.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel prixVehicule = new JLabel();
-		prixVehicule.setText("test");
+		prixVehicule.setText(" " + vehicule.getPrix());
 		prixVehicule.setBorder(BorderFactory.createTitledBorder(" Prix du vehicule "));
 		prixVehicule.setPreferredSize(new Dimension(250,40));
         prixVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -90,7 +85,7 @@ public class ZViewVehicule extends JDialog{
 		option.setPreferredSize(new Dimension(500,85));
 		option.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel optionVehicule = new JLabel();
-		optionVehicule.setText("test");
+		optionVehicule.setText(" " + vehicule.getOptions());
 		optionVehicule.setBorder(BorderFactory.createTitledBorder(" Options du vehicule "));
 		optionVehicule.setPreferredSize(new Dimension(450,70));
         optionVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -100,7 +95,7 @@ public class ZViewVehicule extends JDialog{
 		total.setPreferredSize(new Dimension(350,65));
 		total.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel totalVehicule = new JLabel();
-		totalVehicule.setText("test");
+		totalVehicule.setText(" " + vehicule .getPrixTotal());
 		totalVehicule.setBorder(BorderFactory.createTitledBorder(" Prix total du vehicule "));
 		totalVehicule.setPreferredSize(new Dimension(300,50));
         totalVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -125,7 +120,5 @@ public class ZViewVehicule extends JDialog{
 		      e.printStackTrace();
 		    }  
 }
-	public void view() {
-		
-	}
+	
 }

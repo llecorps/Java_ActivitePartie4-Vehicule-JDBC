@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -23,6 +24,7 @@ import fr.ocr.sql.DAO;
 import fr.ocr.sql.DAOFactory;
 import fr.ocr.sql.HsqldbConnection;
 import voiture.Marque;
+import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.option.Option;
 import fr.ocr.sql.VehiculeDAO;
@@ -35,7 +37,7 @@ public class ZAddVehicule extends JDialog {
 	private JTextField nom , prix ;
 	private JButton ok = new JButton ("OK");
 	private boolean sendData;
-	private Option optionV;
+	private List<Option> optionV;
 	private Moteur moteurV;
 	private Marque marqueV;
 
@@ -216,12 +218,18 @@ private void initComponent() {
 	    			  
 	    			  Statement state =  HsqldbConnection.getInstance().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 	    				
-	    			  
+	    			  HsqldbConnection.getInstance().setAutoCommit(false);
 	    			  ResultSet nextID = HsqldbConnection.getInstance().prepareStatement("CALL NEXT VALUE FOR seq_vehicule_id").executeQuery();
 	    				 if (nextID.next()) {
 	    				 	 int ID = nextID.getInt(1);
-	    				 	String query = "INSERT INTO vehicule(marque,moteur,prix,nom,id) VALUES("+marqueV+""+moteurL+""+prix+""+nom+")WHERE id"+ID;
-	    				 	state.executeUpdate(query);
+	    				 	DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
+	    				    Vehicule vehicule = vehiculeDao.find(ID);
+	    				    vehicule = new Vehicule();
+	    				    vehicule.setNom(nom.getText());
+	    				    vehicule.setMarque(marqueV);
+	    				    vehicule.setMoteur(moteurV);
+	    				    vehicule.setListOptions(optionV);
+	    				 
 	    				}
 	    				 
 	    				
