@@ -1,56 +1,46 @@
 package fr.ocr.sql;
 
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import voiture.moteur.Moteur;
 import voiture.moteur.TypeMoteur;
 
-public class MoteurDAO extends DAO<Moteur> {
-	public MoteurDAO(Connection conn) {
+public class TypeMoteurDAO extends DAO<TypeMoteur> {
+	public TypeMoteurDAO(Connection conn) {
 		super(conn);
 	}
 
-	public boolean create(Moteur obj) {
+	public boolean create(TypeMoteur obj) {
 		return false;
 	}
 
-	public boolean delete(Moteur obj) {
+	public boolean delete(TypeMoteur obj) {
 		return false;
 	}
 
-	public boolean update(Moteur obj) {
+	public boolean update(TypeMoteur obj) {
 		return false;
 	}
 
-	public Moteur find(int id) {
-		Moteur moteur = new Moteur();      
+	public TypeMoteur find(int id) {
+		TypeMoteur typeMoteur = new TypeMoteur();      
 
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM moteur WHERE id = " + id);
-			TypeMoteur typeMoteur = null;
 			if(result.first())
 
-
-				moteur = new Moteur(id,typeMoteur, result.getString("cylindre"), result.getDouble("prix"));
-		     typeMoteur = new TypeMoteur();
-
-
-
+				typeMoteur = new TypeMoteur(id,result.getString("nom"));
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return moteur;
+		return typeMoteur;
 	}
 
 
 
-}
-
-
+	}

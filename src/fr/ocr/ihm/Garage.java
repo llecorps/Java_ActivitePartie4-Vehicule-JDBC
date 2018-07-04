@@ -1,9 +1,12 @@
 package fr.ocr.ihm;
 
 import java.awt.BorderLayout;
+import fr.ocr.observer.Observateur;
+import fr.ocr.observer.Observable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -16,9 +19,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import fr.ocr.ihm.listener.NewVehiculeListener;
 import fr.ocr.ihm.listener.ViewMenuListener;
+import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAOTableFactory;
 import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
@@ -26,6 +32,9 @@ import fr.ocr.sql.HsqldbConnection;
 public class Garage extends JFrame {
 
 	//Les diff�rents objets de notre IHM
+	//-- Les logs
+		private static final Logger logger = LogManager.getLogger();
+	
 	private JMenuBar bar = new JMenuBar();
 	private JMenu menuVehicule = new JMenu("Vehicule");
 	private JMenuItem menuVehiculeAjouter = new JMenuItem("Ajouter");
@@ -66,6 +75,7 @@ public class Garage extends JFrame {
 						BorderLayout.CENTER);
 		this.setLocationRelativeTo(null);
 		initMenu();
+		logger.info("mon premier message");
 	}
 
 	/**
@@ -115,6 +125,8 @@ public class Garage extends JFrame {
 		bar.add(menuOption);
 		bar.add(menuTypemoteur);
 
+		
+		      
 		this.setJMenuBar(bar);
 	}
 

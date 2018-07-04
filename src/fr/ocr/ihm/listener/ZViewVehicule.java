@@ -19,9 +19,13 @@ import voiture.Vehicule;
 import voiture.option.Option;
 
 public class ZViewVehicule extends JDialog{
+	
+	private Vehicule vehicule;
 
-	public ZViewVehicule(JFrame parent, String title, boolean modal) {
+	public ZViewVehicule(JFrame parent, String title, boolean modal, Vehicule vehicule) {
+		
 		super(parent,title,modal);
+		this.vehicule = vehicule;
 		this.setSize(new Dimension(650,330));
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -30,16 +34,13 @@ public class ZViewVehicule extends JDialog{
 	}
 	private void initComponent() {
 		try {
-			int idV = ViewDetailVehiculeListener.getID();	
-			DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
-		    Vehicule vehicule = vehiculeDao.find(idV);
+		
           		 
 			 
 		JPanel panView = new JPanel();
 		panView.setBackground(Color.getHSBColor(0.550f, 0.40f, 0.90f));
 		panView.setPreferredSize(new Dimension(200,55));
 		panView.setBorder(BorderFactory.createLineBorder(Color.black));
-		
 		JPanel nom = new JPanel();
 		nom.setBackground(Color.white);
 		nom.setPreferredSize(new Dimension(220,55));
@@ -55,7 +56,7 @@ public class ZViewVehicule extends JDialog{
 		marque.setPreferredSize(new Dimension(220,55));
 		marque.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel marqueVehicule = new JLabel();
-		marqueVehicule.setText(" " + vehicule.getMarque());
+		marqueVehicule.setText(vehicule.getMarque().getNom());
 		marqueVehicule.setBorder(BorderFactory.createTitledBorder(" Marque du Vehicule "));
 		marqueVehicule.setPreferredSize(new Dimension(180,40));
         marqueVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -65,7 +66,7 @@ public class ZViewVehicule extends JDialog{
 		moteur.setPreferredSize(new Dimension(300,55));
 		moteur.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel moteurVehicule = new JLabel();
-		moteurVehicule.setText(" "+ vehicule.getMoteur());
+		moteurVehicule.setText(vehicule.getMoteur().getType().getNom());
 		moteurVehicule.setBorder(BorderFactory.createTitledBorder(" Type de moteur du vehicule "));
 		moteurVehicule.setPreferredSize(new Dimension(250,40));
         moteurVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -75,7 +76,7 @@ public class ZViewVehicule extends JDialog{
 		prix.setPreferredSize(new Dimension(300,55));
 		prix.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel prixVehicule = new JLabel();
-		prixVehicule.setText(" " + vehicule.getPrix());
+		prixVehicule.setText(Double.toString(vehicule.getPrix()));
 		prixVehicule.setBorder(BorderFactory.createTitledBorder(" Prix du vehicule "));
 		prixVehicule.setPreferredSize(new Dimension(250,40));
         prixVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -85,7 +86,9 @@ public class ZViewVehicule extends JDialog{
 		option.setPreferredSize(new Dimension(500,85));
 		option.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel optionVehicule = new JLabel();
-		optionVehicule.setText(" " + vehicule.getOptions());
+		for(Option optionL : vehicule.getOptions())	
+		optionVehicule.setText(optionL.getNom());
+		
 		optionVehicule.setBorder(BorderFactory.createTitledBorder(" Options du vehicule "));
 		optionVehicule.setPreferredSize(new Dimension(450,70));
         optionVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -95,11 +98,11 @@ public class ZViewVehicule extends JDialog{
 		total.setPreferredSize(new Dimension(350,65));
 		total.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel totalVehicule = new JLabel();
-		totalVehicule.setText(" " + vehicule .getPrixTotal());
+		totalVehicule.setText(Double.toString(vehicule .getPrixTotal()));
 		totalVehicule.setBorder(BorderFactory.createTitledBorder(" Prix total du vehicule "));
 		totalVehicule.setPreferredSize(new Dimension(300,50));
         totalVehicule.setHorizontalAlignment(JLabel.CENTER);
-        
+        	
         prix.add(prixVehicule);
 		nom.add(nomVehicule);
 		marque.add(marqueVehicule);
@@ -111,7 +114,7 @@ public class ZViewVehicule extends JDialog{
 		panView.add(marque);
 		panView.add(moteur);
 		panView.add(prix);
-		panView.add(option);
+		panView.add(option);	
 		panView.add(total);
 		this.setVisible(true);
 		

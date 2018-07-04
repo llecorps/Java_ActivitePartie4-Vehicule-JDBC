@@ -161,87 +161,64 @@ private void initComponent() {
 	ok.addActionListener(new ActionListener(){
 	      public void actionPerformed(ActionEvent arg0) {        
 	    		
-	    		 try {
-	    			  if(option1.isSelected()) {
-	    				 optionV = optionDao.find(0);
-	    			  }
-	    			  if(option2.isSelected()) {
-		    			 optionV = optionDao.find(1);
-		    			  }
-	    			  if(option3.isSelected()) {
-		    			 optionV = optionDao.find(2);
-		    			  }
-	    			  if(option4.isSelected()) {
-		    			 optionV = optionDao.find(3);
-		    			  }
-	    			  if(option5.isSelected()) {
-		    			optionV = optionDao.find(4);
-		    			  }
-	    			  if(marque.getSelectedItem().equals(marque1)) {
-		    				marqueV  = marqueDao.find(0);
-		    			  }
-	   		          
-	    			  if(marque.getSelectedItem().equals(marque2)) {
-		    				marqueV  = marqueDao.find(1);
-		    			  }
-	    			  if(marque.getSelectedItem().equals(marque3)) {
-		    				marqueV  = marqueDao.find(2);
-		    			  }
-	    			  
-	    			  if(moteurL.getSelectedItem().equals(moteur1)) {
-		    				moteurV  = moteurDao.find(0);
-		    			  }
-	    			  if(moteurL.getSelectedItem().equals(moteur2)) {
-		    				moteurV  = moteurDao.find(1);
-		    			  }
-	    			  if(moteurL.getSelectedItem().equals(moteur3)) {
-		    				moteurV  = moteurDao.find(2);
-		    			  }
-	    			  if(moteurL.getSelectedItem().equals(moteur4)) {
-		    				moteurV  = moteurDao.find(3);
-		    			  }
-	    			  if(moteurL.getSelectedItem().equals(moteur5)) {
-		    				moteurV  = moteurDao.find(4);
-		    			  }
-	    			  if(moteurL.getSelectedItem().equals(moteur6)) {
-		    				moteurV  = moteurDao.find(5);
-		    			  }
-	    			  if(moteurL.getSelectedItem().equals(moteur7)) {
-		    				moteurV  = moteurDao.find(6);
-		    			  }
-	    			  if(moteurL.getSelectedItem().equals(moteur8)) {
-		    				moteurV  = moteurDao.find(7);
-		    			  }
-	    			  if(moteurL.getSelectedItem().equals(moteur9)) {
-		    				moteurV  = moteurDao.find(8);
-		    			  }
-	    			  
-	    			  Statement state =  HsqldbConnection.getInstance().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+	    		 if(option1.isSelected()) {
+					 optionV = optionDao.find(0);
+				  }
+				  if(option2.isSelected()) {
+					 optionV = optionDao.find(1);
+					  }
+				  if(option3.isSelected()) {
+					 optionV = optionDao.find(2);
+					  }
+				  if(option4.isSelected()) {
+					 optionV = optionDao.find(3);
+					  }
+				  if(option5.isSelected()) {
+					optionV = optionDao.find(4);
+					  }
+				  if(marque.getSelectedItem().equals(marque1)) {
+						marqueV  = marqueDao.find(0);
+					  }
+				  
+				  if(marque.getSelectedItem().equals(marque2)) {
+						marqueV  = marqueDao.find(1);
+					  }
+				  if(marque.getSelectedItem().equals(marque3)) {
+						marqueV  = marqueDao.find(2);
+					  }
+				  
+				  if(moteurL.getSelectedItem().equals(moteur1)) {
+						moteurV  = moteurDao.find(0);
+					  }
+				  if(moteurL.getSelectedItem().equals(moteur2)) {
+						moteurV  = moteurDao.find(1);
+					  }
+				  if(moteurL.getSelectedItem().equals(moteur3)) {
+						moteurV  = moteurDao.find(2);
+					  }
+				  if(moteurL.getSelectedItem().equals(moteur4)) {
+						moteurV  = moteurDao.find(3);
+					  }
+				  if(moteurL.getSelectedItem().equals(moteur5)) {
+						moteurV  = moteurDao.find(4);
+					  }
+				  if(moteurL.getSelectedItem().equals(moteur6)) {
+						moteurV  = moteurDao.find(5);
+					  }
+				  if(moteurL.getSelectedItem().equals(moteur7)) {
+						moteurV  = moteurDao.find(6);
+					  }
+				  if(moteurL.getSelectedItem().equals(moteur8)) {
+						moteurV  = moteurDao.find(7);
+					  }
+				  if(moteurL.getSelectedItem().equals(moteur9)) {
+						moteurV  = moteurDao.find(8);
+				  }
+	    		 
 	    				
-	    			  HsqldbConnection.getInstance().setAutoCommit(false);
-	    			  ResultSet nextID = HsqldbConnection.getInstance().prepareStatement("CALL NEXT VALUE FOR seq_vehicule_id").executeQuery();
-	    				 if (nextID.next()) {
-	    				 	 int ID = nextID.getInt(1);
-	    				 	DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
-	    				    Vehicule vehicule = vehiculeDao.find(ID);
-	    				    vehicule = new Vehicule();
-	    				    vehicule.setNom(nom.getText());
-	    				    vehicule.setMarque(marqueV);
-	    				    vehicule.setMoteur(moteurV);
-	    				    vehicule.setListOptions(optionV);
-	    				 
-	    				}
-	    				 
-	    				
-	    				
-	    			
-	    			
-	    				
-	    			}catch(SQLException erreur)	{
-	    				erreur.printStackTrace();
-	    			}
 	    		
 	      }
+	      
 
 	      public String getOption(){
 	        return (option1.isSelected()) ? option1.getText() : 

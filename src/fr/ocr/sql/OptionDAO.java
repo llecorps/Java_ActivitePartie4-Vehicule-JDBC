@@ -4,6 +4,7 @@ package fr.ocr.sql;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import voiture.moteur.Moteur;
 import voiture.option.Option;
@@ -35,6 +36,7 @@ public class OptionDAO extends DAO<Option> {
 			if(result.first())
 
 				option = new Option(id,result.getString("description"), result.getDouble("prix"));
+			    
 
 		} catch (SQLException e) {
 			e.printStackTrace();

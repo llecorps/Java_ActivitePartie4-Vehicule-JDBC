@@ -6,10 +6,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
@@ -25,15 +28,30 @@ import voiture.Vehicule;
 public class NewVehiculeListener implements ActionListener {
 
 	private JFrame frame;
+	private static final Logger logger = LogManager.getLogger();
 
 	public NewVehiculeListener(JFrame f) {
 		frame = f;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		ZAddVehicule zAdd = new ZAddVehicule(null,"Ajout d'un vehicule",true);
+		try {
+		Connection connect = HsqldbConnection.getInstance();
+		connect.setAutoCommit(false);
+		// Nous allons récupérer le prochain ID
+		ResultSet nextID = connect.prepareStatement("CALL NEXT VALUE FOR seq_vehicule_id").executeQuery();
+		 if (nextID.next()) {
+		 	 int ID = nextID.getInt(1);
+			//…
 		
+		ZAddVehicule zAdd = new ZAddVehicule(null,"Ajout d'un vehicule",true);
+		DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
+	    Vehicule vehicule = vehiculeDao.find(ID);
+	    
+		 }
+		}catch(SQLException arg0) {
+			logger.error(arg0);
 		}
 			 
-			
+	}	
 }

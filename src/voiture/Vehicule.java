@@ -1,7 +1,9 @@
 package voiture;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import voiture.moteur.Moteur;
 import voiture.option.Option;
@@ -14,6 +16,7 @@ public class Vehicule {
 	private String nom;
 	private List<Option> listOptions = new ArrayList<>();
 	private Moteur mot = null;
+	private Set<Marque> listMarque = new HashSet<Marque>();
 
 	public Vehicule() {
 	}
@@ -38,8 +41,8 @@ public class Vehicule {
 
 	public String toString() {
 		String str = marque + " : " + nom + " " + mot + " (" + this.prix
-				+ "€) " + listOptions;
-		str += " d'une valeur totale de " + getPrixTotal() + " €";
+				+ "ï¿½) " + listOptions;
+		str += " d'une valeur totale de " + getPrixTotal() + " ï¿½";
 		return str;
 	}
 
@@ -102,5 +105,9 @@ public class Vehicule {
 	public void setMoteur(Moteur mot) {
 		this.mot = mot;
 	}
+	public void addMarque(Marque marque) {
+	    if(!listMarque.contains(marque))
+	      listMarque.add(marque);
+	  }
 
 }
