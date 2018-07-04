@@ -42,43 +42,37 @@ public class VehiculeDAO extends DAO<Vehicule> {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM vehicule WHERE id = " + id);
+			
 			if(result.next())
 				
 
 				vehicule = new Vehicule(id,result.getString("nom"), null, null,result.getDouble("prix"));
+			    
 				
 				
 				MarqueDAO marqueDao = new MarqueDAO(connect);
 				result = this.connect.createStatement().executeQuery(
-						"SELECT nom,id FROM marque");
+						"SELECT marque,id FROM vehicule WHERE id = " + id );
 				while(result.next())
-				vehicule.setMarque(marqueDao.find(result.getInt("id")));
-		
-				
-				
+				vehicule.setMarque(marqueDao.find(result.getInt("marque")));
 
 				
 				MoteurDAO moteurDao = new MoteurDAO(this.connect);
 				result = this.connect.createStatement().executeQuery(
-						"SELECT id,cylindre,moteur,prix FROM moteur");
-				while(result.next())
-				vehicule.setMoteur(moteurDao.find(result.getInt("id")));
-				
+						"SELECT moteur,id FROM vehicule WHERE id = " + id);
+				while(result.next()) 
+				vehicule.setMoteur(moteurDao.find(result.getInt("moteur")));
 						
-				
-
-				
 			
 				OptionDAO optionDao = new OptionDAO(this.connect);
 				result = this.connect.createStatement().executeQuery(
-						"SELECT * FROM vehicule_option WHERE id_vehicule = "+ id );
+						"SELECT id_option FROM vehicule_option WHERE id_vehicule = "+ id );
 				while(result.next()) {
-				for(int i = 1 ; i < result.getRow() ; i++) {
 
 					logger.info("Je passe dans la boucle");
-					vehicule.addOption(optionDao.find(i));
+					vehicule.addOption(optionDao.find(result.getInt("id_option")));
 				}
-				}
+				
 				
 
 
@@ -88,6 +82,7 @@ public class VehiculeDAO extends DAO<Vehicule> {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.error(e);
 		}
 		return vehicule;
 	}

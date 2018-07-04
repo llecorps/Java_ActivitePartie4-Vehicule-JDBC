@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
@@ -66,7 +67,7 @@ public class ZViewVehicule extends JDialog{
 		moteur.setPreferredSize(new Dimension(300,55));
 		moteur.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel moteurVehicule = new JLabel();
-		moteurVehicule.setText(vehicule.getMoteur().getType().getNom());
+		moteurVehicule.setText(vehicule.getMoteur().getCylindre()+"  "+vehicule.getMoteur().getType().getNom());
 		moteurVehicule.setBorder(BorderFactory.createTitledBorder(" Type de moteur du vehicule "));
 		moteurVehicule.setPreferredSize(new Dimension(250,40));
         moteurVehicule.setHorizontalAlignment(JLabel.CENTER);
@@ -86,8 +87,8 @@ public class ZViewVehicule extends JDialog{
 		option.setPreferredSize(new Dimension(500,85));
 		option.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel optionVehicule = new JLabel();
-		for(Option optionL : vehicule.getOptions())	
-		optionVehicule.setText(optionL.getNom());
+		List<Option> optionL = vehicule.getOptions();	
+		optionVehicule.setText(optionL.toString());
 		
 		optionVehicule.setBorder(BorderFactory.createTitledBorder(" Options du vehicule "));
 		optionVehicule.setPreferredSize(new Dimension(450,70));

@@ -40,11 +40,12 @@ public class MoteurDAO extends DAO<Moteur> {
 
 
 				moteur = new Moteur(id,null, result.getString("cylindre"), result.getDouble("prix"));
+			
 			    TypeMoteurDAO typeMoteurDao = new TypeMoteurDAO(this.connect);
 				result = this.connect.createStatement().executeQuery(
-						"SELECT id,description FROM type_moteur");
+						"SELECT moteur,id FROM moteur WHERE id = " + id );
 				while(result.next())
-				moteur.setType(typeMoteurDao.find(result.getInt("id")));
+				moteur.setType(typeMoteurDao.find(result.getInt("moteur")));
 		     
 
 
