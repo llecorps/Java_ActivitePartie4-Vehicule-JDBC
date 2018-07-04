@@ -33,9 +33,9 @@ public class ZViewVehicule extends JDialog{
 		this.initComponent();
 	}
 	private void initComponent() {
-		try {
 		
-          		 
+		try {
+		 
 			 
 		JPanel panView = new JPanel();
 		panView.setBackground(Color.getHSBColor(0.550f, 0.40f, 0.90f));

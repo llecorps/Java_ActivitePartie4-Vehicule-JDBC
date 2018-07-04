@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import voiture.Marque;
 import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.option.Option;
@@ -39,32 +40,40 @@ public class VehiculeDAO extends DAO<Vehicule> {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM vehicule WHERE id = " + id);
-			if(result.next()) {
+			if(result.next())
+				
 
-				vehicule = new Vehicule();
+				vehicule = new Vehicule(id,result.getString("nom"), null, null,result.getDouble("prix"));
+				
+				
 				MarqueDAO marqueDao = new MarqueDAO(this.connect);
 				vehicule.setMarque(marqueDao.find(result.getInt("id")));
+				
+				
 
+				
 				MoteurDAO moteurDao = new MoteurDAO(this.connect);
-				vehicule.setMarque(marqueDao.find(result.getInt("id")));
+				vehicule.setMoteur(moteurDao.find(result.getInt("id")));
+				
 
-
-
+				
+			
 				OptionDAO optionDao = new OptionDAO(this.connect);
 				result = this.connect.createStatement().executeQuery(
 						"SELECT * FROM vehicule_option WHERE id_vehicule = "+ id );
-
+				while(result.next()) {
 				for(int i = 1 ; i < result.getRow() ; i++) {
 
 					logger.info("Je passe dans la boucle");
 					vehicule.addOption(optionDao.find(i));
-
 				}
+				}
+				
 
 
 
 
-			}  
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
