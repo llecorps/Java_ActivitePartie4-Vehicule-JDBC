@@ -43,22 +43,22 @@ public class ZViewVehicule extends JDialog{
 		panView.setBorder(BorderFactory.createLineBorder(Color.black));
 		JPanel nom = new JPanel();
 		nom.setBackground(Color.white);
-		nom.setPreferredSize(new Dimension(220,55));
+		nom.setPreferredSize(new Dimension(270,55));
 		nom.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel nomVehicule = new JLabel();
 		nomVehicule.setText(vehicule.getNom());
 		nomVehicule.setBorder(BorderFactory.createTitledBorder(" Nom du Vehicule "));
-		nomVehicule.setPreferredSize(new Dimension(180,40));
+		nomVehicule.setPreferredSize(new Dimension(250,40));
         nomVehicule.setHorizontalAlignment(JLabel.CENTER);
         
         JPanel marque = new JPanel();
 		marque.setBackground(Color.white);
-		marque.setPreferredSize(new Dimension(220,55));
+		marque.setPreferredSize(new Dimension(270,55));
 		marque.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel marqueVehicule = new JLabel();
 		marqueVehicule.setText(vehicule.getMarque().getNom());
 		marqueVehicule.setBorder(BorderFactory.createTitledBorder(" Marque du Vehicule "));
-		marqueVehicule.setPreferredSize(new Dimension(180,40));
+		marqueVehicule.setPreferredSize(new Dimension(250,40));
         marqueVehicule.setHorizontalAlignment(JLabel.CENTER);
         
         JPanel moteur = new JPanel();

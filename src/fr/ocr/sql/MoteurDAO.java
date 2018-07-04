@@ -11,7 +11,6 @@ import voiture.moteur.TypeMoteur;
 
 public class MoteurDAO extends DAO<Moteur> {
 	
-	private TypeMoteur typeMoteur = null;
 	
 	public MoteurDAO(Connection conn) {
 		super(conn);
@@ -40,14 +39,12 @@ public class MoteurDAO extends DAO<Moteur> {
 			if(result.first())
 
 
-				moteur = new Moteur(id,typeMoteur, result.getString("cylindre"), result.getDouble("prix"));
-			    result = this.connect.createStatement().executeQuery(
-			    		"SELECT id,description FROM type_moteur"
-			    		);
-		        TypeMoteurDAO typeMoteurDao = new TypeMoteurDAO(this.connect);
-		        
-		        while(result.next())
-		        	moteur.setType(typeMoteurDao.find(result.getType()));
+				moteur = new Moteur(id,null, result.getString("cylindre"), result.getDouble("prix"));
+			    TypeMoteurDAO typeMoteurDao = new TypeMoteurDAO(this.connect);
+				result = this.connect.createStatement().executeQuery(
+						"SELECT id,description FROM type_moteur");
+				while(result.next())
+				moteur.setType(typeMoteurDao.find(result.getInt("id")));
 		     
 
 

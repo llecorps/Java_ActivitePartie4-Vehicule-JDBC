@@ -30,10 +30,10 @@ public class TypeMoteurDAO extends DAO<TypeMoteur> {
 		try {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM moteur WHERE id = " + id);
+					ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM type_moteur WHERE id = " + id);
 			if(result.first())
 
-				typeMoteur = new TypeMoteur(id,result.getString("nom"));
+				typeMoteur = new TypeMoteur(id,result.getString("description"));
 
 		} catch (SQLException e) {
 			e.printStackTrace();

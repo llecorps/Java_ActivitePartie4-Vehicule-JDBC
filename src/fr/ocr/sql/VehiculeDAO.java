@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import voiture.Marque;
 import voiture.Vehicule;
 import voiture.moteur.Moteur;
+import voiture.moteur.TypeMoteur;
 import voiture.option.Option;
 
 public class VehiculeDAO extends DAO<Vehicule> {
@@ -34,6 +35,7 @@ public class VehiculeDAO extends DAO<Vehicule> {
 
 	public Vehicule find(int id) {
 		Vehicule vehicule = new Vehicule();
+		
 
 
 		try {
@@ -46,14 +48,23 @@ public class VehiculeDAO extends DAO<Vehicule> {
 				vehicule = new Vehicule(id,result.getString("nom"), null, null,result.getDouble("prix"));
 				
 				
-				MarqueDAO marqueDao = new MarqueDAO(this.connect);
+				MarqueDAO marqueDao = new MarqueDAO(connect);
+				result = this.connect.createStatement().executeQuery(
+						"SELECT nom,id FROM marque");
+				while(result.next())
 				vehicule.setMarque(marqueDao.find(result.getInt("id")));
+		
 				
 				
 
 				
 				MoteurDAO moteurDao = new MoteurDAO(this.connect);
+				result = this.connect.createStatement().executeQuery(
+						"SELECT id,cylindre,moteur,prix FROM moteur");
+				while(result.next())
 				vehicule.setMoteur(moteurDao.find(result.getInt("id")));
+				
+						
 				
 
 				
