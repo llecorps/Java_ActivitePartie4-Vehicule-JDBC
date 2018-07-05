@@ -12,8 +12,8 @@ public class TypeMoteurDAO extends DAO<TypeMoteur> {
 		super(conn);
 	}
 
-	public boolean create(TypeMoteur obj) {
-		return false;
+	public TypeMoteur create(TypeMoteur obj) {
+		return obj;
 	}
 
 	public boolean delete(TypeMoteur obj) {
@@ -43,4 +43,4 @@ public class TypeMoteurDAO extends DAO<TypeMoteur> {
 
 
 
-	}
+}

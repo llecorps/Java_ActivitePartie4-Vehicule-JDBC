@@ -1,6 +1,7 @@
 package fr.ocr.sql;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -21,8 +22,36 @@ public class VehiculeDAO extends DAO<Vehicule> {
 		super(conn);
 	}
 
-	public boolean create(Vehicule obj) {
-		return false;
+	public Vehicule create(Vehicule obj) {
+
+try {
+		
+	connect.setAutoCommit(false);
+	ResultSet nextID = connect.prepareStatement("CALL NEXT VALUE FOR seq_vehicule_id").executeQuery();
+	 if (nextID.next()) {
+	 	 int ID = nextID.getInt(1);
+	 	PreparedStatement prepare = this.connect
+                .prepareStatement(
+        			"INSERT INTO vehicule (marque,moteur,prix,nom,id)"+
+        			"VALUES(?,?,?,?,?)"
+        		);
+	 	prepare.setString(1, obj.getMarque().getNom());
+		prepare.setString(2, obj.getMoteur().getCylindre());
+		prepare.setDouble(3, obj.getPrix());
+		prepare.setString(4, obj.getNom());
+		prepare.setInt(5, ID);
+		
+		prepare.executeUpdate();
+	}
+		
+
+			
+}catch(SQLException arg0) {
+	arg0.printStackTrace();
+	
+}
+return obj;
+			
 	}
 
 	public boolean delete(Vehicule obj) {
@@ -69,7 +98,7 @@ public class VehiculeDAO extends DAO<Vehicule> {
 						"SELECT id_option FROM vehicule_option WHERE id_vehicule = "+ id );
 				while(result.next()) {
 
-					logger.info("Je passe dans la boucle");
+					logger.info("Recup d'une option");
 					vehicule.addOption(optionDao.find(result.getInt("id_option")));
 				}
 				

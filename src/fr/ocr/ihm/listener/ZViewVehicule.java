@@ -44,7 +44,7 @@ public class ZViewVehicule extends JDialog{
 		panView.setBorder(BorderFactory.createLineBorder(Color.black));
 		JPanel nom = new JPanel();
 		nom.setBackground(Color.white);
-		nom.setPreferredSize(new Dimension(270,55));
+		nom.setPreferredSize(new Dimension(300,55));
 		nom.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel nomVehicule = new JLabel();
 		nomVehicule.setText(vehicule.getNom());
@@ -54,7 +54,7 @@ public class ZViewVehicule extends JDialog{
         
         JPanel marque = new JPanel();
 		marque.setBackground(Color.white);
-		marque.setPreferredSize(new Dimension(270,55));
+		marque.setPreferredSize(new Dimension(300,55));
 		marque.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel marqueVehicule = new JLabel();
 		marqueVehicule.setText(vehicule.getMarque().getNom());
@@ -99,7 +99,7 @@ public class ZViewVehicule extends JDialog{
 		total.setPreferredSize(new Dimension(350,65));
 		total.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel totalVehicule = new JLabel();
-		totalVehicule.setText(Double.toString(vehicule .getPrixTotal()));
+		totalVehicule.setText(Double.toString(vehicule.getPrixTotal()));
 		totalVehicule.setBorder(BorderFactory.createTitledBorder(" Prix total du vehicule "));
 		totalVehicule.setPreferredSize(new Dimension(300,50));
         totalVehicule.setHorizontalAlignment(JLabel.CENTER);

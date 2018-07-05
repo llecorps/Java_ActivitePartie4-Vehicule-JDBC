@@ -16,8 +16,8 @@ public class MoteurDAO extends DAO<Moteur> {
 		super(conn);
 	}
 
-	public boolean create(Moteur obj) {
-		return false;
+	public Moteur create(Moteur obj) {
+		return obj;
 	}
 
 	public boolean delete(Moteur obj) {

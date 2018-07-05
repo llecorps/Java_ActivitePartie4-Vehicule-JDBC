@@ -14,8 +14,8 @@ public class OptionDAO extends DAO<Option> {
 		super(conn);
 	}
 
-	public boolean create(Option obj) {
-	return false;
+	public Option create(Option obj) {
+	return obj;
 	}
 
 	public boolean delete(Option obj) {

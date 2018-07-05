@@ -2,6 +2,7 @@ package fr.ocr.sql;
 
 import java.sql.Connection;
 import fr.ocr.sql.HsqldbConnection;
+import voiture.Vehicule;
 
 public abstract class DAO<T> {
   protected Connection connect = null;
@@ -15,7 +16,7 @@ public abstract class DAO<T> {
   * @param obj
   * @return boolean 
   */
-  public abstract boolean create(T obj);
+  public abstract T create(T obj);
 
   /**
   * Méthode pour effacer

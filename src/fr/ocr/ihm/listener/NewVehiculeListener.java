@@ -38,17 +38,10 @@ public class NewVehiculeListener implements ActionListener {
 		try {
 		Connection connect = HsqldbConnection.getInstance();
 		connect.setAutoCommit(false);
-		// Nous allons récupérer le prochain ID
-		ResultSet nextID = connect.prepareStatement("CALL NEXT VALUE FOR seq_vehicule_id").executeQuery();
-		 if (nextID.next()) {
-		 	 int ID = nextID.getInt(1);
-			//…
-		
 		ZAddVehicule zAdd = new ZAddVehicule(null,"Ajout d'un vehicule",true);
-		DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
-	    Vehicule vehicule = vehiculeDao.find(ID);
+		
 	    
-		 }
+		 
 		}catch(SQLException arg0) {
 			logger.error(arg0);
 		}

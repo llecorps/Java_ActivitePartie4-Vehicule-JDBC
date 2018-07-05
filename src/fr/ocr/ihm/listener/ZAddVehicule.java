@@ -159,61 +159,30 @@ private void initComponent() {
 	option.setBorder(BorderFactory.createTitledBorder(" Options Disponibles "));
 	
 	ok.addActionListener(new ActionListener(){
-	      public void actionPerformed(ActionEvent arg0) {        
-	    		
-	    		 if(option1.isSelected()) {
-					 optionV = optionDao.find(0);
-				  }
-				  if(option2.isSelected()) {
-					 optionV = optionDao.find(1);
-					  }
-				  if(option3.isSelected()) {
-					 optionV = optionDao.find(2);
-					  }
-				  if(option4.isSelected()) {
-					 optionV = optionDao.find(3);
-					  }
-				  if(option5.isSelected()) {
-					optionV = optionDao.find(4);
-					  }
-				  if(marque.getSelectedItem().equals(marque1)) {
-						marqueV  = marqueDao.find(0);
-					  }
-				  
-				  if(marque.getSelectedItem().equals(marque2)) {
-						marqueV  = marqueDao.find(1);
-					  }
-				  if(marque.getSelectedItem().equals(marque3)) {
-						marqueV  = marqueDao.find(2);
-					  }
-				  
-				  if(moteurL.getSelectedItem().equals(moteur1)) {
-						moteurV  = moteurDao.find(0);
-					  }
-				  if(moteurL.getSelectedItem().equals(moteur2)) {
-						moteurV  = moteurDao.find(1);
-					  }
-				  if(moteurL.getSelectedItem().equals(moteur3)) {
-						moteurV  = moteurDao.find(2);
-					  }
-				  if(moteurL.getSelectedItem().equals(moteur4)) {
-						moteurV  = moteurDao.find(3);
-					  }
-				  if(moteurL.getSelectedItem().equals(moteur5)) {
-						moteurV  = moteurDao.find(4);
-					  }
-				  if(moteurL.getSelectedItem().equals(moteur6)) {
-						moteurV  = moteurDao.find(5);
-					  }
-				  if(moteurL.getSelectedItem().equals(moteur7)) {
-						moteurV  = moteurDao.find(6);
-					  }
-				  if(moteurL.getSelectedItem().equals(moteur8)) {
-						moteurV  = moteurDao.find(7);
-					  }
-				  if(moteurL.getSelectedItem().equals(moteur9)) {
-						moteurV  = moteurDao.find(8);
-				  }
+	      public void actionPerformed(ActionEvent arg0) {  
+	    	  
+	    	  if(marque.getSelectedItem().equals(marque1)) {
+	    		  marqueV = marqueDao.find(0);
+	    	  }
+	    	  
+	    	  
+	    	  
+	    	  if(moteurL.getSelectedItem().equals(moteur1)) {
+	    		  moteurV = moteurDao.find(0);
+	    	  }
+				 
+				 
+				 
+				   DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
+					Vehicule vehicule = new Vehicule();
+					
+					vehicule.setMarque(marqueV);
+					vehicule.setMoteur(moteurV);
+					vehicule.setPrix(vehicule.getPrix());
+					vehicule.setNom(nom.getText());
+					vehicule.setId(vehicule.getId());
+					vehicule.setListOptions(optionV);
+					vehicule = vehiculeDao.create(vehicule);
 	    		 
 	    				
 	    		
@@ -231,7 +200,11 @@ private void initComponent() {
 
 	      public String getPrix(){
 	        return (prix.getText().equals("")) ? "9999999" : prix.getText();
-	      }      
+	      }   
+	      
+	      
+	   
+			
 });
 
 	option.setBackground(Color.white);
