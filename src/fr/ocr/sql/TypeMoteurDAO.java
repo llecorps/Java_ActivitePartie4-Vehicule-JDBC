@@ -16,9 +16,23 @@ public class TypeMoteurDAO extends DAO<TypeMoteur> {
 		return obj;
 	}
 
-	public boolean delete(TypeMoteur obj) {
-		return false;
+	public void delete(TypeMoteur obj) {
+		try {
+			
+			this.connect	
+                .createStatement(
+                	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                	ResultSet.CONCUR_UPDATABLE
+                 ).executeUpdate(
+                	"DELETE FROM type_moteur WHERE id = " + obj.getId()
+                 );
+
+	    } catch (SQLException e) {
+	            e.printStackTrace();
+	    }
+		return;
 	}
+	
 
 	public boolean update(TypeMoteur obj) {
 		return false;

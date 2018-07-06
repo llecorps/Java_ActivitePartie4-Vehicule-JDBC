@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.option.Option;
 
@@ -18,9 +19,23 @@ public class OptionDAO extends DAO<Option> {
 	return obj;
 	}
 
-	public boolean delete(Option obj) {
-		return false;
+	public void delete(Option obj) {
+		try {
+			
+			this.connect	
+                .createStatement(
+                	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                	ResultSet.CONCUR_UPDATABLE
+                 ).executeUpdate(
+                	"DELETE FROM option WHERE id = " + obj.getId()
+                 );
+
+	    } catch (SQLException e) {
+	            e.printStackTrace();
+	    }
+	return ;
 	}
+	
 
 	public boolean update(Option obj) {
 		return false;

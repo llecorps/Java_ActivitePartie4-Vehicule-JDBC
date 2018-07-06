@@ -35,16 +35,9 @@ public class NewVehiculeListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		try {
-		Connection connect = HsqldbConnection.getInstance();
-		connect.setAutoCommit(false);
-		ZAddVehicule zAdd = new ZAddVehicule(null,"Ajout d'un vehicule",true);
 		
-	    
-		 
-		}catch(SQLException arg0) {
-			logger.error(arg0);
-		}
+			Vehicule vehicule = new Vehicule();
+		ZAddVehicule zAdd = new ZAddVehicule(null,"Ajout d'un vehicule",true,vehicule);
 			 
 	}	
 }

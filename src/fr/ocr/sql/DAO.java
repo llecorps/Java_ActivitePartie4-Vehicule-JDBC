@@ -20,10 +20,10 @@ public abstract class DAO<T> {
 
   /**
   * Méthode pour effacer
-  * @param obj
-  * @return boolean 
+  * @param obj 
+ * @return 
   */
-  public abstract boolean delete(T obj);
+  public abstract void delete(T obj);
 
   /**
   * Méthode de mise à jour

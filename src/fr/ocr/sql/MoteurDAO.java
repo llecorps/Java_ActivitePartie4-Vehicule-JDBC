@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.moteur.TypeMoteur;
 
@@ -20,9 +21,23 @@ public class MoteurDAO extends DAO<Moteur> {
 		return obj;
 	}
 
-	public boolean delete(Moteur obj) {
-		return false;
+	public void delete(Moteur obj) {
+		try {
+			
+			this.connect	
+                .createStatement(
+                	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                	ResultSet.CONCUR_UPDATABLE
+                 ).executeUpdate(
+                	"DELETE FROM moteur WHERE id = " + obj.getId()
+                 );
+
+	    } catch (SQLException e) {
+	            e.printStackTrace();
+	    }
+		return ;
 	}
+	
 
 	public boolean update(Moteur obj) {
 		return false;

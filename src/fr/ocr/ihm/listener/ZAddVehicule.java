@@ -8,12 +8,15 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,19 +34,26 @@ import fr.ocr.sql.VehiculeDAO;
 
 public class ZAddVehicule extends JDialog {
 	
+	private Vehicule vehicule;
+	
 	private JLabel vehiculeLabel, marqueLabel, moteurLabel, optionLabel , prixLabel ;
 	private JRadioButton option1 , option2 , option3 , option4 , option5;
-	private JComboBox<String> marque , moteurL ;
-	private JTextField nom , prix ;
+	
+	private JComboBox marque , moteurL ;
+	private JTextField nom  ;
+	JFormattedTextField prix = new JFormattedTextField(NumberFormat.getNumberInstance());
 	private JButton ok = new JButton ("OK");
 	private boolean sendData;
-	private List<Option> optionV;
-	private Moteur moteurV;
-	private Marque marqueV;
+	private List<Option> optionV = new ArrayList();
+	private Moteur moteurV = new Moteur();
+	private Marque marqueV = new Marque();
+	private int moteurID = 0;
+	private int marqueID = 0;
 
 
-public ZAddVehicule(JFrame parent, String title, boolean modal) {
+public ZAddVehicule(JFrame parent, String title, boolean modal,Vehicule vehicule) {
 	super(parent,title,modal);
+	this.vehicule = vehicule;
 	this.setSize(new Dimension(650,270));
 	this.setLocationRelativeTo(null);
 	this.setResizable(false);
@@ -52,6 +62,8 @@ public ZAddVehicule(JFrame parent, String title, boolean modal) {
 }
 
 private void initComponent() {
+	
+	try {
 		
 	
 	JPanel panVehicule = new JPanel();
@@ -123,7 +135,7 @@ private void initComponent() {
 	panPrix.setBackground(Color.white);
 	panPrix.setPreferredSize(new Dimension(280,55));
 	panPrix.setBorder(BorderFactory.createLineBorder(Color.black));
-	prix = new JTextField();
+	prix = new JFormattedTextField(NumberFormat.getNumberInstance());;
 	prix.setBorder(BorderFactory.createTitledBorder(" Prix du Vehicule "));
 	prix.setBackground(Color.white);
 	prix.setPreferredSize(new Dimension(250,40));
@@ -161,46 +173,38 @@ private void initComponent() {
 	ok.addActionListener(new ActionListener(){
 	      public void actionPerformed(ActionEvent arg0) {  
 	    	  
-	    	  if(marque.getSelectedItem().equals(marque1)) {
-	    		  marqueV = marqueDao.find(0);
-	    	  }
-	    	  
-	    	  
-	    	  
-	    	  if(moteurL.getSelectedItem().equals(moteur1)) {
-	    		  moteurV = moteurDao.find(0);
-	    	  }
-				 
-				 
-				 
-				   DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
-					Vehicule vehicule = new Vehicule();
-					
-					vehicule.setMarque(marqueV);
-					vehicule.setMoteur(moteurV);
-					vehicule.setPrix(vehicule.getPrix());
+	    	moteurID = moteurL.getSelectedIndex();
+	    	marqueID = marque.getSelectedIndex();
+	   	  
+	    	Double price = ((Number) prix.getValue()).doubleValue();
+				 				 
+				  
+	    	  DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
+					vehicule.setMarque(marqueDao.find(marqueID));
+					vehicule.setMoteur(moteurDao.find(moteurID));
+					vehicule.setPrix(price);
 					vehicule.setNom(nom.getText());
 					vehicule.setId(vehicule.getId());
 					vehicule.setListOptions(optionV);
 					vehicule = vehiculeDao.create(vehicule);
+					
 	    		 
 	    				
 	    		
 	      }
 	      
 
-	      public String getOption(){
-	        return (option1.isSelected()) ? option1.getText() : 
-	               (option2.isSelected()) ? option2.getText() : 
-	               (option3.isSelected()) ? option3.getText() : 
-	               (option4.isSelected()) ? option4.getText() : 
-	               (option5.isSelected()) ? option5.getText() :
-	                option1.getText();  
+	      public List<Option> getOption(){
+	       
+	        		if(option1.isSelected()) {
+	        			optionV.add(optionL3);
+	        			
+	        		}
+	        		
+	        		return optionV;
 	      }
 
-	      public String getPrix(){
-	        return (prix.getText().equals("")) ? "9999999" : prix.getText();
-	      }   
+	        
 	      
 	      
 	   
@@ -223,6 +227,10 @@ private void initComponent() {
 	
 	this.getContentPane().add(content,BorderLayout.CENTER);
 	this.setVisible(true);
+	
+	} catch (Exception e) {
+	      e.printStackTrace();
+	    } 
 	
 
 }

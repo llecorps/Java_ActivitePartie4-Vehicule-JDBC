@@ -47,7 +47,7 @@ public class ZViewVehicule extends JDialog{
 		nom.setPreferredSize(new Dimension(300,55));
 		nom.setBorder(BorderFactory.createLineBorder(Color.black));
 		JLabel nomVehicule = new JLabel();
-		nomVehicule.setText(vehicule.getNom());
+		nomVehicule.setText("   "+vehicule.getNom());
 		nomVehicule.setBorder(BorderFactory.createTitledBorder(" Nom du Vehicule "));
 		nomVehicule.setPreferredSize(new Dimension(250,40));
         nomVehicule.setHorizontalAlignment(JLabel.CENTER);

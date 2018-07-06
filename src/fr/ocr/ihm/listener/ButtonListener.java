@@ -8,12 +8,16 @@ import java.sql.Statement;
 
 import javax.swing.JTable;
 
+import fr.ocr.sql.DAO;
 import fr.ocr.sql.HsqldbConnection;
+import fr.ocr.sql.VehiculeDAO;
+import voiture.Vehicule;
 
 //Notre listener pour le bouton
 public class ButtonListener implements ActionListener {
 	protected int column, row, id;
 	protected JTable table;
+	private static int idV ;
 
 
 	public void setColumn(int col) {
@@ -29,20 +33,13 @@ public class ButtonListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		try {
-		String query = ("DELETE marque FROM vehicule WHERE row +"+this.row);
-		query += "DELETE moteur FROM vehicule WHERE row + "+this.row ;
-		query += "DELETE prix FROM vehicule WHERE row + "+this.row ;
-		query += "DELETE nom FROM vehicule WHERE row + "+this.row ;
-		Statement state = HsqldbConnection.getInstance().createStatement(
-				ResultSet.TYPE_SCROLL_INSENSITIVE,
-				ResultSet.CONCUR_UPDATABLE);
-		 state.executeUpdate(query);
-		state.close();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
+
+
+		idV = Integer.valueOf(row);
+		DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
+		Vehicule vehicule = vehiculeDao.find(idV);
+			vehiculeDao.delete(vehicule);
+
 	}
 
 }
