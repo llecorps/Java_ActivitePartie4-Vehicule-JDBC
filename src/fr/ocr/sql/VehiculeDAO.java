@@ -33,7 +33,7 @@ public class VehiculeDAO extends DAO<Vehicule> {
 				
 				
 				
-				PreparedStatement prepar = this.connect
+				PreparedStatement prepar = HsqldbConnection.getInstance()
 						.prepareStatement("INSERT INTO vehicule (id,nom,prix,marque,moteur)"+"VALUES(?,?,?,?,?)");
 				prepar.setLong(1, ID);
 				prepar.setString(2, obj.getNom());
@@ -42,12 +42,12 @@ public class VehiculeDAO extends DAO<Vehicule> {
 				prepar.setInt(5, obj.getMoteur().getId());
 				prepar.executeUpdate();
 				
-				logger.info("Ajout de l'id, nom, prix, marque, moteur");
+				logger.info("Ajout de l'id : " +ID +"/nom :" + obj.getNom()+ "/prix : " + obj.getPrix() + "/marque : " +obj.getMarque() + "/moteur : " +obj.getMoteur());
 				
 				
 				
 
-				PreparedStatement prepare = this.connect
+				PreparedStatement prepare = HsqldbConnection.getInstance()
 						.prepareStatement(
 								"INSERT INTO vehicule_option (id_vehicule,id_option)"+
 										"VALUES(?,?)"
@@ -56,7 +56,6 @@ public class VehiculeDAO extends DAO<Vehicule> {
 				prepare.setInt(2, obj.getId());
 				prepare.executeUpdate();
 				
-				logger.info("Ajout de l'option vehicule");
 			}
 	
 			 
@@ -72,30 +71,23 @@ public class VehiculeDAO extends DAO<Vehicule> {
 	}
 
 	public void delete(Vehicule obj) {
-		try {
-
-			this.connect	
-			.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE, 
-					ResultSet.CONCUR_UPDATABLE
-					).executeUpdate(
-							"DELETE FROM vehicule_option WHERE id_vehicule = " + obj.getId() 
-							);
-			this.connect	
-			.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE, 
-					ResultSet.CONCUR_UPDATABLE
-					).executeUpdate(
-							"DELETE FROM marque WHERE id = " + obj.getId() 
-							);
-			this.connect	
-			.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE, 
-					ResultSet.CONCUR_UPDATABLE
-					).executeUpdate(
-							"DELETE FROM moteur WHERE id = " + obj.getId() 
-							);
-
+		
+							try	{
+								
+								this.connect
+					                .createStatement(
+					                	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+					                	ResultSet.CONCUR_UPDATABLE
+					                 ).executeUpdate(
+					                	"DELETE FROM vehicule_option WHERE id_vehicule = " + obj.getId()
+					                 );
+								this.connect
+				                .createStatement(
+				                	ResultSet.TYPE_SCROLL_INSENSITIVE, 
+				                	ResultSet.CONCUR_UPDATABLE
+				                 ).executeUpdate(
+				                	"DELETE FROM vehicule WHERE id = " + obj.getId()
+				                 );
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -144,7 +136,7 @@ public class VehiculeDAO extends DAO<Vehicule> {
 					"SELECT id_option FROM vehicule_option WHERE id_vehicule = "+ id );
 			while(result.next()) {
 
-				logger.info("Recup d'une option");
+				logger.info("Récupération de l'option : " + result.getString("id_option").toString());
 				vehicule.addOption(optionDao.find(result.getInt("id_option")));
 			}
 

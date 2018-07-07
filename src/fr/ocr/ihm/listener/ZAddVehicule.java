@@ -2,6 +2,7 @@ package fr.ocr.ihm.listener;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,14 +15,19 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.DAOFactory;
@@ -31,20 +37,25 @@ import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.option.Option;
 import fr.ocr.sql.VehiculeDAO;
+import javafx.scene.control.CheckBox;
 
 public class ZAddVehicule extends JDialog {
 	
 	private Vehicule vehicule;
+	private static final Logger logger = LogManager.getLogger();
 	
 	private JLabel vehiculeLabel, marqueLabel, moteurLabel, optionLabel , prixLabel ;
-	private JRadioButton option1 , option2 , option3 , option4 , option5;
+
+	
 	
 	private JComboBox marque , moteurL ;
 	private JTextField nom  ;
 	JFormattedTextField prix = new JFormattedTextField(NumberFormat.getNumberInstance());
 	private JButton ok = new JButton ("OK");
 	private boolean sendData;
-	private List<Option> optionV = new ArrayList();
+	private List<Option> optionV = new ArrayList<Option>();
+	private List<Double> options;
+	
 	private Moteur moteurV = new Moteur();
 	private Marque marqueV = new Marque();
 	private int moteurID = 0;
@@ -142,22 +153,67 @@ private void initComponent() {
 	panPrix.add(prix);
 	
     final DAO<Option> optionDao = DAOFactory.getOptionDAO();
-	Option optionL1 = optionDao.find(0);
-	Option optionL2 = optionDao.find(1);
-	Option optionL3 = optionDao.find(2);
-	Option optionL4 = optionDao.find(3);
-	Option optionL5 = optionDao.find(4);
+	final Option optionL1 = optionDao.find(0);
+	final Option optionL2 = optionDao.find(1);
+	final Option optionL3 = optionDao.find(2);
+	final Option optionL4 = optionDao.find(3);
+	final Option optionL5 = optionDao.find(4);
 	
 	JPanel panOption = new JPanel();
 	panOption.setBackground(Color.white);
 	panOption.setPreferredSize(new Dimension(550,75));
 	panOption.setBorder(BorderFactory.createLineBorder(Color.black));
 	JPanel option = new JPanel();
-	option1 = new JRadioButton(optionL1.getNom());
-	option2 = new JRadioButton(optionL2.getNom());
-	option3 = new JRadioButton(optionL3.getNom());
-	option4 = new JRadioButton(optionL4.getNom());
-	option5 = new JRadioButton(optionL5.getNom());
+	
+	JCheckBox option1 = new JCheckBox(optionL1.getNom());
+	option1.addActionListener(new ActionListener(){
+	      public void actionPerformed(ActionEvent arg0) {   
+	    	  vehicule.addOption(optionDao.find(0));
+	    	  optionV.add(optionDao.find(0));
+	    	  
+	    	  
+	    	 
+	      }
+	});
+	      
+	JCheckBox option2 = new JCheckBox(optionL2.getNom());
+	
+	option2.addActionListener(new ActionListener(){
+	      public void actionPerformed(ActionEvent arg0) {   
+	    	  vehicule.addOption(optionDao.find(1));
+	    	  optionV.add(optionDao.find(1));
+	    	  
+	    	  
+	    	
+	      }
+	});
+	JCheckBox option3 = new JCheckBox(optionL3.getNom());
+	option3.addActionListener(new ActionListener(){
+	      public void actionPerformed(ActionEvent arg0) {   
+	    	  optionV.add(optionDao.find(2));
+	    	  vehicule.addOption(optionDao.find(2));
+	    	
+	      }
+	});
+	
+	JCheckBox option4 = new JCheckBox(optionL4.getNom());
+	option4.addActionListener(new ActionListener(){
+	      public void actionPerformed(ActionEvent arg0) {   
+	    	  optionV.add(optionDao.find(3));
+	    	  vehicule.addOption(optionDao.find(3));
+	    	  
+	      }
+	});
+	
+	JCheckBox option5 = new JCheckBox(optionL5.getNom());
+	option5.addActionListener(new ActionListener(){
+	      public void actionPerformed(ActionEvent arg0) {   
+	    	  vehicule.addOption(optionDao.find(4));
+	    	  optionV.add(optionDao.find(4));
+	   
+	      }
+	});
+	
 	option.add(option1);
 	option1.setBackground(Color.getHSBColor(0.550f, 0.20f, 0.95f));
 	option.add(option2);
@@ -172,11 +228,12 @@ private void initComponent() {
 	
 	ok.addActionListener(new ActionListener(){
 	      public void actionPerformed(ActionEvent arg0) {  
+	    	  try {
 	    	  
 	    	moteurID = moteurL.getSelectedIndex();
 	    	marqueID = marque.getSelectedIndex();
-	   	  
 	    	Double price = ((Number) prix.getValue()).doubleValue();
+	    	
 				 				 
 				  
 	    	  DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
@@ -187,27 +244,17 @@ private void initComponent() {
 					vehicule.setId(vehicule.getId());
 					vehicule.setListOptions(optionV);
 					vehicule = vehiculeDao.create(vehicule);
+				
+					logger.info("Option(s) ajoutée(s) au véhicule : " + optionV);
 					
-	    		 
+	    	  }catch(Exception arg1) {
+	    		  JOptionPane jop3;
+	    	      jop3 = new JOptionPane();
+	    	      jop3.showMessageDialog(null, "Vous devez entrer le nom du vehicule et son prix !", "Erreur", JOptionPane.ERROR_MESSAGE);
+	    	  }
 	    				
 	    		
-	      }
-	      
-
-	      public List<Option> getOption(){
-	       
-	        		if(option1.isSelected()) {
-	        			optionV.add(optionL3);
-	        			
-	        		}
-	        		
-	        		return optionV;
-	      }
-
-	        
-	      
-	      
-	   
+	      }   
 			
 });
 
@@ -230,6 +277,7 @@ private void initComponent() {
 	
 	} catch (Exception e) {
 	      e.printStackTrace();
+	      
 	    } 
 	
 

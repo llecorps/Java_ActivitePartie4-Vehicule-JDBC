@@ -8,6 +8,9 @@ import java.sql.Statement;
 
 import javax.swing.JTable;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.HsqldbConnection;
 import fr.ocr.sql.VehiculeDAO;
@@ -18,6 +21,7 @@ public class ButtonListener implements ActionListener {
 	protected int column, row, id;
 	protected JTable table;
 	private static int idV ;
+	private static final Logger logger = LogManager.getLogger();
 
 
 	public void setColumn(int col) {
@@ -35,10 +39,14 @@ public class ButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 
 
-		idV = Integer.valueOf(row);
+		
+		idV = Integer.valueOf((String)table.getValueAt(row,this.column-2));
 		DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
-		Vehicule vehicule = vehiculeDao.find(idV);
+		Vehicule vehicule = vehiculeDao.find(idV) ;
+		logger.info("Suppression du véhicule : "+vehicule.getNom());
 			vehiculeDao.delete(vehicule);
+			
+			
 
 	}
 
