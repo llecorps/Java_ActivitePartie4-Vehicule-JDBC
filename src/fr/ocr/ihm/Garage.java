@@ -24,6 +24,7 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import fr.ocr.ihm.listener.ButtonListener;
 import fr.ocr.ihm.listener.NewVehiculeListener;
 import fr.ocr.ihm.listener.ViewMenuListener;
 import fr.ocr.observer.Observable;
@@ -31,8 +32,9 @@ import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAOTableFactory;
 import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
+import jdk.nashorn.internal.ir.BreakableNode;
 
-public class Garage extends JFrame {
+public class Garage extends JFrame implements Observable {
 
 	//Les diff�rents objets de notre IHM
 	//-- Les logs
@@ -66,6 +68,7 @@ public class Garage extends JFrame {
 	private String[] comboData = { "Trés bien", "Bien", "Mal" };
 
 	private JPanel contentPane = new JPanel();
+	private ButtonListener delete;
 
 	public Garage() {
 
@@ -79,14 +82,10 @@ public class Garage extends JFrame {
 						HsqldbConnection.getInstance(), DatabaseTable.VEHICULE)),
 						BorderLayout.CENTER);
 		this.setLocationRelativeTo(null);
-	   
-
-		
-				
-	
 		
 		initMenu();
-		logger.info("Lancement du garage");
+		logger.info("Lancement du garage");	    
+
 	}
 
 	/**
@@ -140,25 +139,37 @@ public class Garage extends JFrame {
 		
 		this.setJMenuBar(bar);
 	}
-	public void addObservateur(Observateur obs) {
-	    this.listObservateur.add(obs);
-	  }
-	  //Retire tous les observateurs de la liste
-	  public void delObservateur() {
-	    this.listObservateur = new ArrayList<Observateur>();
-	  }
-	  //Avertit les observateurs que l'objet observable a changé 
-	  //et invoque la méthode update() de chaque observateur
-	  public void updateObservateur() {
-	    for(Observateur obs : this.listObservateur )
-	      obs.update();
-	  }
 	  public static void main(String[] args) {
 			Garage g = new Garage();
 			g.setVisible(true);
+			ButtonListener delete = new ButtonListener();
+			g.addObservateur(delete);
 			
 			
 		}
+
+	public void addObservateur(Observateur obs) {
+		listObservateur.add(obs);
+		
+	}
+
+	public void delObservateur() {
+		
+	}
+
+	public void notifierObservateur() {
+		for(int i=0;i<listObservateur.size();i++)
+        {
+                Observateur obs = listObservateur.get(i);
+                obs.update(this);
+        }
+		
+	}
+	public void setDelete()
+    {
+
+            notifierObservateur();
+    }
 	  
 
 	

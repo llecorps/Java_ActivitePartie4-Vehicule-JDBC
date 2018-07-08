@@ -1,27 +1,40 @@
 package fr.ocr.ihm.listener;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import fr.ocr.ihm.Garage;
+import fr.ocr.observer.Observable;
+import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAO;
+import fr.ocr.sql.DAOTableFactory;
+import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
 import fr.ocr.sql.VehiculeDAO;
 import voiture.Vehicule;
 
 //Notre listener pour le bouton
-public class ButtonListener implements ActionListener {
+public class ButtonListener implements ActionListener,Observateur {
 	protected int column, row, id;
 	protected JTable table;
+	private Garage g;
+	DatabaseTable tableau;
 	private static int idV ;
 	private static final Logger logger = LogManager.getLogger();
+	private ArrayList<Observateur> listObservateur = new ArrayList<Observateur>();
+	
 
 
 	public void setColumn(int col) {
@@ -45,9 +58,43 @@ public class ButtonListener implements ActionListener {
 		Vehicule vehicule = vehiculeDao.find(idV) ;
 		logger.info("Suppression du véhicule : "+vehicule.getNom());
 			vehiculeDao.delete(vehicule);
+		
+			
+			 
+			
+			
+			
+			
 			
 			
 
 	}
 
-}
+	@Override
+	public void update(Observable obs, JTable table) {
+		      
+		        Garage g = new Garage();
+		       
+                logger.info("Passage dans l'Observateur update");
+                g.getContentPane().removeAll();
+               
+                g.getContentPane().add(
+        				new JScrollPane(DAOTableFactory.getTable(
+        						HsqldbConnection.getInstance(), DatabaseTable.VEHICULE)),
+        				BorderLayout.CENTER);;
+                g.revalidate();
+                
+                
+                
+               
+        
+		
+	}
+
+	public void update(Observable obs) {
+		// TODO Auto-generated method stub
+		
+	}
+	 
+		}
+

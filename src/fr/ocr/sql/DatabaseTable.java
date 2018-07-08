@@ -18,4 +18,8 @@ public enum DatabaseTable {
 	public String toString() {
 		return name;
 	}
-}
+
+
+		
+	}
+
