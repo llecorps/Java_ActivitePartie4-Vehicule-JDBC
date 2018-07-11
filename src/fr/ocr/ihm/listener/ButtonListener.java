@@ -26,10 +26,10 @@ import fr.ocr.sql.VehiculeDAO;
 import voiture.Vehicule;
 
 //Notre listener pour le bouton
-public class ButtonListener implements ActionListener,Observateur {
+public class ButtonListener implements ActionListener,Observable {
 	protected int column, row, id;
 	protected JTable table;
-	private Garage g;
+	private Observateur obs;
 	DatabaseTable tableau;
 	private static int idV ;
 	private static final Logger logger = LogManager.getLogger();
@@ -58,6 +58,7 @@ public class ButtonListener implements ActionListener,Observateur {
 		Vehicule vehicule = vehiculeDao.find(idV) ;
 		logger.info("Suppression du véhicule : "+vehicule.getNom());
 			vehiculeDao.delete(vehicule);
+			update(obs);
 		
 			
 			 
@@ -71,30 +72,23 @@ public class ButtonListener implements ActionListener,Observateur {
 	}
 
 	@Override
-	public void update(Observable obs, JTable table) {
-		      
-		        Garage g = new Garage();
-		       
-                logger.info("Passage dans l'Observateur update");
-                g.getContentPane().removeAll();
-               
-                g.getContentPane().add(
-        				new JScrollPane(DAOTableFactory.getTable(
-        						HsqldbConnection.getInstance(), DatabaseTable.VEHICULE)),
-        				BorderLayout.CENTER);;
-                g.revalidate();
-                
-                
-                
-               
-        
-		
-	}
-
-	public void update(Observable obs) {
+	public void addObservateur(Observateur obs) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void update(Observateur obs) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delObservateur() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	 
 		}
 

@@ -9,6 +9,7 @@ import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.HsqldbConnection;
 import fr.ocr.sql.VehiculeDAO;
+import fr.yoannroche.ihm.ZViewVehicule;
 import voiture.Vehicule;
 import fr.ocr.observer.Observateur;
 import fr.ocr.observer.Observable;

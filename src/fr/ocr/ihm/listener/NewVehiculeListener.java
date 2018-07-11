@@ -28,6 +28,7 @@ import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.HsqldbConnection;
 import fr.ocr.sql.VehiculeDAO;
+import fr.yoannroche.ihm.ZAddVehicule;
 import voiture.Vehicule;
 public class NewVehiculeListener implements ActionListener {
 

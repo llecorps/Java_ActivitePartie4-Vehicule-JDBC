@@ -1,8 +1,11 @@
 package fr.ocr.sql;
 
 import java.sql.Connection;
+import java.util.List;
+
 import fr.ocr.sql.HsqldbConnection;
 import voiture.Vehicule;
+import voiture.option.Option;
 
 public abstract class DAO<T> {
   protected Connection connect = null;
@@ -38,4 +41,6 @@ public abstract class DAO<T> {
   * @return T
   */
   public abstract T find(int id);
+
+public abstract List<Option> findAll(List<Option> optionV);
 }

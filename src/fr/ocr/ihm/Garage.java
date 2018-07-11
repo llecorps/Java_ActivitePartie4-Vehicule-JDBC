@@ -34,12 +34,11 @@ import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
 import jdk.nashorn.internal.ir.BreakableNode;
 
-public class Garage extends JFrame implements Observable {
+public class Garage extends JFrame implements Observateur {
 
 	//Les diff�rents objets de notre IHM
 	//-- Les logs
 		private static final Logger logger = LogManager.getLogger();
-		private ArrayList<Observateur> listObservateur = new ArrayList<Observateur>();
 		private Garage garage;
 	
 	private JMenuBar bar = new JMenuBar();
@@ -142,34 +141,15 @@ public class Garage extends JFrame implements Observable {
 	  public static void main(String[] args) {
 			Garage g = new Garage();
 			g.setVisible(true);
-			ButtonListener delete = new ButtonListener();
-			g.addObservateur(delete);
 			
 			
 		}
+	  public void update() {
+		  menuVehicule.doClick();
+		  logger.info("Méthode update du pattern Observer");
+	  }
 
-	public void addObservateur(Observateur obs) {
-		listObservateur.add(obs);
-		
-	}
-
-	public void delObservateur() {
-		
-	}
-
-	public void notifierObservateur() {
-		for(int i=0;i<listObservateur.size();i++)
-        {
-                Observateur obs = listObservateur.get(i);
-                obs.update(this);
-        }
-		
-	}
-	public void setDelete()
-    {
-
-            notifierObservateur();
-    }
+	
 	  
 
 	

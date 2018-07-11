@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import voiture.Marque;
 import voiture.Vehicule;
 import voiture.moteur.Moteur;
+import voiture.option.Option;
 
 public class MarqueDAO extends DAO<Marque> {
 	public MarqueDAO(Connection conn) {
@@ -58,6 +59,14 @@ public class MarqueDAO extends DAO<Marque> {
 				e.printStackTrace();
 			}
 			return marque;
+		}
+
+		
+
+		@Override
+		public java.util.List<Option> findAll(java.util.List<Option> optionV) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 

@@ -1,4 +1,4 @@
-package fr.ocr.ihm.listener;
+package fr.yoannroche.ihm;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +12,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.HsqldbConnection;
@@ -55,7 +56,7 @@ public class ZViewVehicule extends JDialog{
         JPanel marque = new JPanel();
 		marque.setBackground(Color.white);
 		marque.setPreferredSize(new Dimension(300,55));
-		marque.setBorder(BorderFactory.createLineBorder(Color.black));
+		marque.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.DARK_GRAY, Color.black));
 		JLabel marqueVehicule = new JLabel();
 		marqueVehicule.setText(vehicule.getMarque().getNom());
 		marqueVehicule.setBorder(BorderFactory.createTitledBorder(" Marque du Vehicule "));

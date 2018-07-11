@@ -6,7 +6,6 @@ import fr.ocr.ihm.Garage;
 
 public interface Observateur {
 
-	public void update(Observable obs);
+	public void update();
 
-	void update(Observable obs, JTable table);
 }

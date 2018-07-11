@@ -1,4 +1,4 @@
-package fr.ocr.ihm.listener;
+package fr.yoannroche.ihm;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -35,11 +35,11 @@ import fr.ocr.sql.DAO;
 import fr.ocr.sql.DAOFactory;
 import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
+import fr.ocr.sql.VehiculeDAO;
 import voiture.Marque;
 import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.option.Option;
-import fr.ocr.sql.VehiculeDAO;
 import javafx.scene.control.CheckBox;
 
 public class ZAddVehicule extends JDialog {
@@ -174,10 +174,8 @@ public class ZAddVehicule extends JDialog {
 			option1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) {   
 					if(option1.isSelected()==true) {
-						
-					vehicule.addOption(optionDao.find(0));
+				
 					option1.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
-					optionV.add(optionDao.find(0));
 					}
 					if(option1.isSelected()==false) {
 						option1.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
@@ -196,8 +194,7 @@ public class ZAddVehicule extends JDialog {
 					if(option2.isSelected()==true) {
 
 						option2.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
-						vehicule.addOption(optionDao.find(1));
-						optionV.add(optionDao.find(1));
+					
 					}
 
 					if(option2.isSelected()==false) {
@@ -210,8 +207,6 @@ public class ZAddVehicule extends JDialog {
 			option3.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) {  
 					if(option3.isSelected()==true) {
-						optionV.add(optionDao.find(2));
-						vehicule.addOption(optionDao.find(2));
 						option3.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
 					}
 					if(option3.isSelected()==false) {
@@ -225,8 +220,6 @@ public class ZAddVehicule extends JDialog {
 			option4.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) {  
 					if(option4.isSelected()==true) {
-						optionV.add(optionDao.find(3));
-						vehicule.addOption(optionDao.find(3));
 						option4.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
 					}
 					if(option4.isSelected()==false) {
@@ -240,8 +233,7 @@ public class ZAddVehicule extends JDialog {
 			option5.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) { 
 					if(option5.isSelected()==true) {
-						vehicule.addOption(optionDao.find(4));
-						optionV.add(optionDao.find(4));
+						
 						option5.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
 					}
 					if(option5.isSelected()==false) {
@@ -280,10 +272,38 @@ public class ZAddVehicule extends JDialog {
 				public void actionPerformed(ActionEvent arg0) {  
 
 					try {
+						
+						if(option1.isSelected()==true) {
+							
+							vehicule.addOption(optionDao.find(0));
+							optionV.add(optionDao.find(0));
+							}
+						if(option2.isSelected()==true) {
+
+							vehicule.addOption(optionDao.find(1));
+							optionV.add(optionDao.find(1));
+						}
+							if(option3.isSelected()==true) {
+								optionV.add(optionDao.find(2));
+								vehicule.addOption(optionDao.find(2));
+							}
+							if(option4.isSelected()==true) {
+								optionV.add(optionDao.find(3));
+								vehicule.addOption(optionDao.find(3));
+							
+							}
+						
+						
+						if(option5.isSelected()==true) {
+							vehicule.addOption(optionDao.find(4));
+							optionV.add(optionDao.find(4));
+						}
 
 						moteurID = moteurL.getSelectedIndex();
 						marqueID = marque.getSelectedIndex();
 						Double price = ((Number) prix.getValue()).doubleValue();
+						
+						
 
 
 
@@ -293,7 +313,7 @@ public class ZAddVehicule extends JDialog {
 						vehicule.setPrix(price);
 						vehicule.setNom(nom.getText());
 						vehicule.setId(vehicule.getId());
-						vehicule.setListOptions(optionV);
+						
 						vehicule = vehiculeDao.create(vehicule);
 
 

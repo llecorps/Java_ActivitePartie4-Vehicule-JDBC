@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.moteur.TypeMoteur;
+import voiture.option.Option;
 
 public class MoteurDAO extends DAO<Moteur> {
 	
@@ -70,6 +71,13 @@ public class MoteurDAO extends DAO<Moteur> {
 			e.printStackTrace();
 		}
 		return moteur;
+	}
+
+
+	@Override
+	public java.util.List<Option> findAll(java.util.List<Option> optionV) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

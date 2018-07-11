@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +18,7 @@ import voiture.option.Option;
 public class VehiculeDAO extends DAO<Vehicule> {
 
 	private static final Logger logger = LogManager.getLogger();
+	private List<Option> ListOptions = new ArrayList<Option>();
 
 	public VehiculeDAO(Connection conn) {
 		super(conn);
@@ -52,11 +54,19 @@ public class VehiculeDAO extends DAO<Vehicule> {
 								"INSERT INTO vehicule_option (id_vehicule,id_option)"+
 										"VALUES(?,?)"
 								);
+			
+				 
+				ListOptions = obj.getOptions();
+		       for(Option option : ListOptions) {
+		        
 				prepare.setInt(1, ID);
-				prepare.setInt(2, obj.getId());
+				prepare.setInt(2, option.getId() );
 				prepare.executeUpdate();
-				
-			}
+				logger.info("Passage dans la boucle d'ajout option");
+				connect.commit();
+		       }
+			   }
+			
 	
 			 
 
@@ -70,10 +80,11 @@ public class VehiculeDAO extends DAO<Vehicule> {
 
 	}
 
+
 	public void delete(Vehicule obj) {
 		
 							try	{
-								
+								connect.setAutoCommit(false);
 								this.connect
 					                .createStatement(
 					                	ResultSet.TYPE_SCROLL_INSENSITIVE, 
@@ -88,6 +99,7 @@ public class VehiculeDAO extends DAO<Vehicule> {
 				                 ).executeUpdate(
 				                	"DELETE FROM vehicule WHERE id = " + obj.getId()
 				                 );
+								connect.commit();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -153,5 +165,13 @@ public class VehiculeDAO extends DAO<Vehicule> {
 		}
 		return vehicule;
 	}
+
+	@Override
+	public List<Option> findAll(List<Option> optionV) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }
 
