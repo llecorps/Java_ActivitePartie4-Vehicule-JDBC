@@ -12,16 +12,18 @@ import javax.swing.JTable;
 import fr.ocr.ihm.ButtonEditor;
 import fr.ocr.ihm.ButtonRenderer;
 import fr.ocr.ihm.listener.ViewDetailVehiculeListener;
+import fr.ocr.observer.Observable;
+import fr.ocr.observer.Observateur;
 
 /**
- * Classe permettant de créer l'objet JTable en fonction de la table que nous
+ * Classe permettant de crï¿½er l'objet JTable en fonction de la table que nous
  * souhaitons afficher
  * 
  * @author cysboy
  */
 public class DAOTableFactory {
 
-	public static JTable getTable(Connection conn, DatabaseTable table) {
+	public static JTable getTable(Connection conn, DatabaseTable table, Observateur frame) {
 		JTable tab = new JTable();
 
 		try (
@@ -33,8 +35,8 @@ public class DAOTableFactory {
 			ResultSetMetaData resultMeta = result.getMetaData();
 			int nbreColumn = resultMeta.getColumnCount();
 			
-			// Pour récupérer le nombre total de ligne
-			// on se place sur la dernière puis on revient avant la première
+			// Pour rï¿½cupï¿½rer le nombre total de ligne
+			// on se place sur la derniï¿½re puis on revient avant la premiï¿½re
 			// pour parcourir
 			result.last();
 			int nbreRow = result.getRow();
@@ -73,7 +75,7 @@ public class DAOTableFactory {
 			tab = new JTable(data, title);
 
 			/**
-			 * On affiche les boutons uniquement pour la table véhicule
+			 * On affiche les boutons uniquement pour la table vï¿½hicule
 			 */
 			if (table.equals(DatabaseTable.VEHICULE)) {
 				tab.getColumn("ACTION").setCellRenderer(

@@ -30,6 +30,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import fr.ocr.ihm.Garage;
+import fr.ocr.ihm.listener.NewVehiculeListener;
+import fr.ocr.observer.Observable;
 import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.DAOFactory;
@@ -67,17 +69,18 @@ public class ZAddVehicule extends JDialog {
 	private int marqueID = 0;
 
 
-	public ZAddVehicule(JFrame parent, String title, boolean modal,Vehicule vehicule) {
+
+	public ZAddVehicule(JFrame parent, String title, boolean modal,Vehicule vehicule,  Observable obs) {
 		super(parent,title,modal);
 		this.vehicule = vehicule;
 		this.setSize(new Dimension(650,280));
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.getContentPane().setBackground(Color.white);
-		this.initComponent();
+		this.initComponent(obs);
 	}
 
-	private void initComponent() {
+	private void initComponent(final Observable obs) {
 
 		try {
 
@@ -316,13 +319,16 @@ public class ZAddVehicule extends JDialog {
 						
 						vehicule = vehiculeDao.create(vehicule);
 
-
+						
+						 obs.updateObservateur();
 						setVisible(false);
 
+						
 
 						logger.info("Option(s) ajoutée(s) au véhicule : " + optionV);
 
 					}catch(Exception arg1) {
+						arg1.printStackTrace();
 						JOptionPane jop3;
 						jop3 = new JOptionPane();
 						jop3.showMessageDialog(null, "Vous devez entrer le nom du vehicule et son prix !", "Erreur", JOptionPane.ERROR_MESSAGE);

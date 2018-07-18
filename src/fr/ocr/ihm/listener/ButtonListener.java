@@ -27,9 +27,9 @@ import voiture.Vehicule;
 
 //Notre listener pour le bouton
 public class ButtonListener implements ActionListener,Observable {
+	Garage g;
 	protected int column, row, id;
 	protected JTable table;
-	private Observateur obs;
 	DatabaseTable tableau;
 	private static int idV ;
 	private static final Logger logger = LogManager.getLogger();
@@ -52,35 +52,27 @@ public class ButtonListener implements ActionListener,Observable {
 	public void actionPerformed(ActionEvent event) {
 
 
-		
 		idV = Integer.valueOf((String)table.getValueAt(row,this.column-2));
 		DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
 		Vehicule vehicule = vehiculeDao.find(idV) ;
 		logger.info("Suppression du véhicule : "+vehicule.getNom());
 			vehiculeDao.delete(vehicule);
-			update(obs);
-		
-			
-			 
-			
-			
-			
-			
-			
+           updateObservateur();
 			
 
 	}
 
 	@Override
 	public void addObservateur(Observateur obs) {
-		// TODO Auto-generated method stub
+		this.listObservateur.add(obs);
 		
 	}
 
 	@Override
-	public void update(Observateur obs) {
-		// TODO Auto-generated method stub
-		
+	public void updateObservateur() {
+		for(Observateur obs : this.listObservateur) {
+			obs.update();
+		}
 	}
 
 	@Override

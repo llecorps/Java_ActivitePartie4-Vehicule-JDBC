@@ -39,7 +39,7 @@ public class Garage extends JFrame implements Observateur {
 	//Les diff�rents objets de notre IHM
 	//-- Les logs
 		private static final Logger logger = LogManager.getLogger();
-		private Garage garage;
+		private Garage g;
 	
 	private JMenuBar bar = new JMenuBar();
 	private JMenu menuVehicule = new JMenu("Vehicule");
@@ -78,12 +78,14 @@ public class Garage extends JFrame implements Observateur {
 
 		this.getContentPane()
 				.add(new JScrollPane(DAOTableFactory.getTable(
-						HsqldbConnection.getInstance(), DatabaseTable.VEHICULE)),
+						HsqldbConnection.getInstance(), DatabaseTable.VEHICULE, this)),
 						BorderLayout.CENTER);
 		this.setLocationRelativeTo(null);
 		
 		initMenu();
-		logger.info("Lancement du garage");	    
+		logger.info("Lancement du garage");	   
+		
+		
 
 	}
 
@@ -145,9 +147,14 @@ public class Garage extends JFrame implements Observateur {
 			
 		}
 	  public void update() {
-		  menuVehicule.doClick();
-		  logger.info("Méthode update du pattern Observer");
+		 
+		    	  menuVehicule.doClick();
+				  logger.info("Méthode update du pattern Observer");
+		       
+		  
+		  
 	  }
+	  
 
 	
 	  

@@ -24,16 +24,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import fr.ocr.ihm.Garage;
+import fr.ocr.observer.Observable;
 import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.HsqldbConnection;
 import fr.ocr.sql.VehiculeDAO;
 import fr.yoannroche.ihm.ZAddVehicule;
 import voiture.Vehicule;
-public class NewVehiculeListener implements ActionListener {
+public class NewVehiculeListener implements ActionListener,Observable {
 
 	private JFrame frame;
 	private static final Logger logger = LogManager.getLogger();
+	private ArrayList<Observateur> listObservateur = new ArrayList<Observateur>();
 	 
 
 	public NewVehiculeListener(JFrame f) {
@@ -43,8 +45,27 @@ public class NewVehiculeListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 			Vehicule vehicule = new Vehicule();
-		ZAddVehicule zAdd = new ZAddVehicule(null,"Ajout d'un vehicule",true,vehicule);
+		ZAddVehicule zAdd = new ZAddVehicule(null,"Ajout d'un vehicule",true,vehicule,this);
 	    
+	}
+
+	public void addObservateur(Observateur obs) {
+		this.listObservateur.add(obs);
+		
+	}
+
+	@Override
+	public void delObservateur() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateObservateur() {
+		for(Observateur obs : this.listObservateur)
+			obs.update();
+		
+		
 	}
 
 		

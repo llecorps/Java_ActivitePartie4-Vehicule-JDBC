@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
+import fr.ocr.observer.Observable;
+import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAOTableFactory;
 import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
@@ -31,7 +33,7 @@ public class ViewMenuListener implements ActionListener {
 		frame.getContentPane().removeAll();
 		frame.getContentPane().add(
 				new JScrollPane(DAOTableFactory.getTable(
-						HsqldbConnection.getInstance(), table)),
+						HsqldbConnection.getInstance(), table,(Observateur)frame)),
 				BorderLayout.CENTER);
 		frame.getContentPane().revalidate();
 
