@@ -73,7 +73,7 @@ public class ZAddVehicule extends JDialog {
 	public ZAddVehicule(JFrame parent, String title, boolean modal,Vehicule vehicule,  Observable obs) {
 		super(parent,title,modal);
 		this.vehicule = vehicule;
-		this.setSize(new Dimension(650,280));
+		this.setSize(new Dimension(650,315));
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.getContentPane().setBackground(Color.white);
@@ -348,7 +348,17 @@ public class ZAddVehicule extends JDialog {
 			content.add(panVehicule);
 			content.add(panMarque);
 			content.add(panMoteur);
+			JPanel espace = new JPanel();
+			espace.setPreferredSize(new Dimension (400,15));
+			espace.setBackground(Color.getHSBColor(0.550f, 0.30f, 0.80f));
+			espace.setBorder(BorderFactory.createLineBorder(Color.black));
+			content.add(espace);
 			content.add(panPrix);
+			JPanel espace2 = new JPanel();
+			espace2.setPreferredSize(new Dimension (400,15));
+			espace2.setBackground(Color.getHSBColor(0.550f, 0.30f, 0.80f));
+			espace2.setBorder(BorderFactory.createLineBorder(Color.black));
+			content.add(espace2);
 			content.add(panOption);
 			content.add(ok);
 			content.add(cancel);
