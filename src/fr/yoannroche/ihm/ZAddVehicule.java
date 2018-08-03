@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -40,6 +41,7 @@ public class ZAddVehicule extends JDialog {
 
 
 	private JComboBox<String> marque , moteurL ;
+	private JCheckBox optionL;
 	private JTextField nom  ;
 	JFormattedTextField prix = new JFormattedTextField(NumberFormat.getNumberInstance());
 	private JButton ok = new JButton ("OK");
@@ -47,6 +49,7 @@ public class ZAddVehicule extends JDialog {
 	private List<Option> optionV = new ArrayList<Option>();
 	private int moteurID = 0;
 	private int marqueID = 0;
+	
 
 
 
@@ -81,16 +84,11 @@ public class ZAddVehicule extends JDialog {
 			panMarque.setBorder(BorderFactory.createLineBorder(Color.black));
 
 			final DAO<Marque> marqueDao = DAOFactory.getMarqueDAO();
-			final Marque marque1 = marqueDao.find(0);
-			final Marque marque2 = marqueDao.find(1);
-			final Marque marque3 = marqueDao.find(2);
-
-
 			marque = new JComboBox<String>();
-
-			marque.addItem(marque1.getNom());
-			marque.addItem(marque2.getNom());
-			marque.addItem(marque3.getNom());
+			for(int i=0;i<4;i++) {
+				marque.addItem(marqueDao.find(i).getNom());
+			}
+			
 			marque.setBorder(BorderFactory.createTitledBorder(" Marque du Vehicule "));
 			marque.setBackground(Color.white);
 			marque.setPreferredSize(new Dimension(170,40));
@@ -102,29 +100,12 @@ public class ZAddVehicule extends JDialog {
 			panMoteur.setBorder(BorderFactory.createLineBorder(Color.black));
 
 			final DAO<Moteur> moteurDao = DAOFactory.getMoteurDAO();
-
-			final Moteur moteur1 = moteurDao.find(0);
-			final Moteur moteur2 = moteurDao.find(1);
-			final Moteur moteur3 = moteurDao.find(2);
-			final Moteur moteur4 = moteurDao.find(3);
-			final Moteur moteur5 = moteurDao.find(4);
-			final Moteur moteur6 = moteurDao.find(5);
-			final Moteur moteur7 = moteurDao.find(6);
-			final Moteur moteur8 = moteurDao.find(7);
-			final Moteur moteur9 = moteurDao.find(8);
-
-
 			moteurL = new JComboBox<String>();
-			moteurL.addItem(moteur1.getCylindre());
-			moteurL.addItem(moteur2.getCylindre());
-			moteurL.addItem(moteur3.getCylindre());
-			moteurL.addItem(moteur4.getCylindre());
-			moteurL.addItem(moteur5.getCylindre());
-			moteurL.addItem(moteur6.getCylindre());
-			moteurL.addItem(moteur7.getCylindre());
-			moteurL.addItem(moteur8.getCylindre());
-			moteurL.addItem(moteur9.getCylindre());
-
+			
+			for(int i =0;i<9;i++) {
+				moteurL.addItem(moteurDao.find(i).getCylindre());
+			}
+			
 			moteurL.setBorder(BorderFactory.createTitledBorder(" Marque du Vehicule "));
 			moteurL.setBackground(Color.white);
 			moteurL.setPreferredSize(new Dimension(170,40));
@@ -141,98 +122,29 @@ public class ZAddVehicule extends JDialog {
 			panPrix.add(prix);
 
 			final DAO<Option> optionDao = DAOFactory.getOptionDAO();
-			final Option optionL1 = optionDao.find(0);
-			final Option optionL2 = optionDao.find(1);
-			final Option optionL3 = optionDao.find(2);
-			final Option optionL4 = optionDao.find(3);
-			final Option optionL5 = optionDao.find(4);
-
 			JPanel panOption = new JPanel();
+			JPanel option = new JPanel();
+		
+			
+			
+			for(int i =0;i<5;i++) {
+				 optionL = new JCheckBox(optionDao.find(i).getNom());
+				option.add(optionL);
+				
+			}
+			
+			
+
+			
 			panOption.setBackground(Color.white);
 			panOption.setPreferredSize(new Dimension(550,75));
 			panOption.setBorder(BorderFactory.createLineBorder(Color.black));
-			JPanel option = new JPanel();
+			
+			option.setPreferredSize(new Dimension(520,60));
 
-			final JCheckBox option1 = new JCheckBox(optionL1.getNom());
-			option1.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0) {   
-					if(option1.isSelected()==true) {
-				
-					option1.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
-					}
-					if(option1.isSelected()==false) {
-						option1.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-						
-					}
-				}
-			});
+		    
 
-			final JCheckBox option2 = new JCheckBox(optionL2.getNom());
-
-			option2.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0) {   
-					if(option2.isSelected()==true) {
-
-						option2.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
-					
-					}
-
-					if(option2.isSelected()==false) {
-						option2.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-					}
-				}
-
-			});
-			final JCheckBox option3 = new JCheckBox(optionL3.getNom());
-			option3.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0) {  
-					if(option3.isSelected()==true) {
-						option3.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
-					}
-					if(option3.isSelected()==false) {
-						option3.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-					}
-
-				}
-			});
-
-			final JCheckBox option4 = new JCheckBox(optionL4.getNom());
-			option4.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0) {  
-					if(option4.isSelected()==true) {
-						option4.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
-					}
-					if(option4.isSelected()==false) {
-						option4.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-					}
-
-				}
-			});
-
-			final JCheckBox option5 = new JCheckBox(optionL5.getNom());
-			option5.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0) { 
-					if(option5.isSelected()==true) {
-						
-						option5.setBackground(Color.getHSBColor(0.550f, 0.50f, 0.95f));
-					}
-					if(option5.isSelected()==false) {
-						option5.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-					}
-
-				}
-			});
-
-			option.add(option1);
-			option1.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-			option.add(option2);
-			option2.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-			option.add(option3);
-			option3.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-			option.add(option4);
-			option4.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
-			option.add(option5);
-			option5.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
+		    
 			option.setBorder(BorderFactory.createTitledBorder(" Options Disponibles "));
 			cancel.setPreferredSize(new Dimension(100,30));
 			cancel.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -252,46 +164,23 @@ public class ZAddVehicule extends JDialog {
 
 					try {
 						
-						if(option1.isSelected()==true) {
-							
-							vehicule.addOption(optionDao.find(0));
-							optionV.add(optionDao.find(0));
-							}
-						if(option2.isSelected()==true) {
-
-							vehicule.addOption(optionDao.find(1));
-							optionV.add(optionDao.find(1));
-						}
-							if(option3.isSelected()==true) {
-								optionV.add(optionDao.find(2));
-								vehicule.addOption(optionDao.find(2));
-							}
-							if(option4.isSelected()==true) {
-								optionV.add(optionDao.find(3));
-								vehicule.addOption(optionDao.find(3));
-							
-							}
 						
-						
-						if(option5.isSelected()==true) {
-							vehicule.addOption(optionDao.find(4));
-							optionV.add(optionDao.find(4));
-						}
 
 						moteurID = moteurL.getSelectedIndex();
 						marqueID = marque.getSelectedIndex();
-						Double price = ((Number) prix.getValue()).doubleValue();
-						
+						Double price = ((Number) prix.getValue()).doubleValue();			
 						DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
 						vehicule.setMarque(marqueDao.find(marqueID));
 						vehicule.setMoteur(moteurDao.find(moteurID));
 						vehicule.setPrix(price);
 						vehicule.setNom(nom.getText());
 						vehicule.setId(vehicule.getId());
-						
+						if(optionL.isSelected()==true) {
+							System.out.println("test");
+						}
 						vehicule = vehiculeDao.create(vehicule);
 				
-						 obs.updateObservateur();
+						 obs.updateObservateur();   //Lancement de la méthode update de l'Observateur.
 						 
 						setVisible(false);
 
