@@ -2,13 +2,9 @@ package fr.yoannroche.ihm;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,29 +16,22 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import fr.ocr.ihm.Garage;
-import fr.ocr.ihm.listener.NewVehiculeListener;
 import fr.ocr.observer.Observable;
-import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.DAOFactory;
-import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
 import fr.ocr.sql.VehiculeDAO;
 import voiture.Marque;
 import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.option.Option;
-import javafx.scene.control.CheckBox;
 
 public class ZAddVehicule extends JDialog {
 
@@ -50,21 +39,12 @@ public class ZAddVehicule extends JDialog {
 	private static final Logger logger = LogManager.getLogger();
 
 
-	private JLabel vehiculeLabel, marqueLabel, moteurLabel, optionLabel , prixLabel ;
-
-
-
-	private JComboBox marque , moteurL ;
+	private JComboBox<String> marque , moteurL ;
 	private JTextField nom  ;
 	JFormattedTextField prix = new JFormattedTextField(NumberFormat.getNumberInstance());
 	private JButton ok = new JButton ("OK");
 	private JButton cancel = new JButton ("CANCEL");
-	private boolean sendData;
 	private List<Option> optionV = new ArrayList<Option>();
-	private List<Double> options;
-
-	private Moteur moteurV = new Moteur();
-	private Marque marqueV = new Marque();
 	private int moteurID = 0;
 	private int marqueID = 0;
 
@@ -106,7 +86,7 @@ public class ZAddVehicule extends JDialog {
 			final Marque marque3 = marqueDao.find(2);
 
 
-			marque = new JComboBox();
+			marque = new JComboBox<String>();
 
 			marque.addItem(marque1.getNom());
 			marque.addItem(marque2.getNom());
@@ -134,7 +114,7 @@ public class ZAddVehicule extends JDialog {
 			final Moteur moteur9 = moteurDao.find(8);
 
 
-			moteurL = new JComboBox();
+			moteurL = new JComboBox<String>();
 			moteurL.addItem(moteur1.getCylindre());
 			moteurL.addItem(moteur2.getCylindre());
 			moteurL.addItem(moteur3.getCylindre());
@@ -184,9 +164,6 @@ public class ZAddVehicule extends JDialog {
 						option1.setBackground(Color.getHSBColor(0.600f, 0.10f, 0.90f));
 						
 					}
-
-
-
 				}
 			});
 
@@ -271,7 +248,6 @@ public class ZAddVehicule extends JDialog {
 			ok.setBorder(BorderFactory.createLineBorder(Color.black));
 			ok.setBackground(Color.getHSBColor(0.246f, 0.45f, 0.94f));
 			ok.addActionListener(new ActionListener(){
-				private Garage garage;
 				public void actionPerformed(ActionEvent arg0) {  
 
 					try {
@@ -306,10 +282,6 @@ public class ZAddVehicule extends JDialog {
 						marqueID = marque.getSelectedIndex();
 						Double price = ((Number) prix.getValue()).doubleValue();
 						
-						
-
-
-
 						DAO<Vehicule> vehiculeDao = new VehiculeDAO(HsqldbConnection.getInstance());
 						vehicule.setMarque(marqueDao.find(marqueID));
 						vehicule.setMoteur(moteurDao.find(moteurID));
@@ -318,20 +290,16 @@ public class ZAddVehicule extends JDialog {
 						vehicule.setId(vehicule.getId());
 						
 						vehicule = vehiculeDao.create(vehicule);
-
-						
+				
 						 obs.updateObservateur();
+						 
 						setVisible(false);
-
-						
 
 						logger.info("Option(s) ajoutée(s) au véhicule : " + optionV);
 
 					}catch(Exception arg1) {
 						arg1.printStackTrace();
-						JOptionPane jop3;
-						jop3 = new JOptionPane();
-						jop3.showMessageDialog(null, "Vous devez entrer le nom du vehicule et son prix !", "Erreur", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Vous devez entrer le nom du vehicule et son prix !", "Erreur", JOptionPane.ERROR_MESSAGE);
 					}
 
 

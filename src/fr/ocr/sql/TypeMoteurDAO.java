@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import voiture.moteur.Moteur;
 import voiture.moteur.TypeMoteur;
 import voiture.option.Option;
 

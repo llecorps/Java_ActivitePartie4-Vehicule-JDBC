@@ -1,6 +1,5 @@
 package fr.ocr.ihm;
 
-import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.DefaultCellEditor;
@@ -17,7 +16,6 @@ import fr.ocr.ihm.listener.ButtonListener;
 public class ButtonEditor extends DefaultCellEditor {
 
 	protected JButton button;
-	private boolean isPushed;
 	private ButtonListener bListener;
 	private String title = "";
 

@@ -1,14 +1,12 @@
 package fr.ocr.ihm.listener;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import fr.ocr.observer.Observable;
 import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAOTableFactory;
 import fr.ocr.sql.DatabaseTable;

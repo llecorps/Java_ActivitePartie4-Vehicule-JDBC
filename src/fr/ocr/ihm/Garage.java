@@ -1,45 +1,32 @@
 package fr.ocr.ihm;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-
-import fr.ocr.observer.Observateur;
-import fr.ocr.observer.Observable;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.KeyStroke;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import fr.ocr.ihm.listener.ButtonListener;
 import fr.ocr.ihm.listener.NewVehiculeListener;
 import fr.ocr.ihm.listener.ViewMenuListener;
-import fr.ocr.observer.Observable;
 import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAOTableFactory;
 import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
-import jdk.nashorn.internal.ir.BreakableNode;
+
 
 public class Garage extends JFrame implements Observateur {
 
-	//Les diff�rents objets de notre IHM
+
+		//Les diff�rents objets de notre IHM
 	//-- Les logs
 		private static final Logger logger = LogManager.getLogger();
-		private Garage g;
 	
 	private JMenuBar bar = new JMenuBar();
 	private JMenu menuVehicule = new JMenu("Vehicule");
@@ -61,20 +48,12 @@ public class Garage extends JFrame implements Observateur {
 	private JMenu menuTypemoteur = new JMenu("Type de moteur");
 	private JMenuItem menuTypemoteurVoir = new JMenuItem("Voir");
 
-	private JTable tableau;
-	private JButton change = new JButton("Changer la taille");
-	// Contenu de notre combo
-	private String[] comboData = { "Trés bien", "Bien", "Mal" };
-
-	private JPanel contentPane = new JPanel();
-	private ButtonListener delete;
-
 	public Garage() {
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("JTable");
 		this.setSize(800, 400);
-		// Donn�es de notre tableau
+		// Données de notre tableau
 
 		this.getContentPane()
 				.add(new JScrollPane(DAOTableFactory.getTable(

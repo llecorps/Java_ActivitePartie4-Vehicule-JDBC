@@ -12,7 +12,6 @@ import javax.swing.JTable;
 import fr.ocr.ihm.ButtonEditor;
 import fr.ocr.ihm.ButtonRenderer;
 import fr.ocr.ihm.listener.ViewDetailVehiculeListener;
-import fr.ocr.observer.Observable;
 import fr.ocr.observer.Observateur;
 
 /**

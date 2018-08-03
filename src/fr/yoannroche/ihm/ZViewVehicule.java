@@ -2,9 +2,6 @@ package fr.yoannroche.ihm;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -12,11 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 
-import fr.ocr.sql.DAO;
-import fr.ocr.sql.HsqldbConnection;
-import fr.ocr.sql.VehiculeDAO;
 import voiture.Vehicule;
 import voiture.option.Option;
 

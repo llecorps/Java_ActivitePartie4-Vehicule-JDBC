@@ -13,9 +13,7 @@ public class HsqldbConnection {
 	private String passwd = "";
 	// Objet Connection
 	private static Connection connect;
-	private static HsqldbConnection instance = new HsqldbConnection();
-
-	// Constructeur privé
+	// Constructeur privÃ©
 	private HsqldbConnection() {
 		try {
 			connect = DriverManager.getConnection(url, user, passwd);
@@ -24,10 +22,10 @@ public class HsqldbConnection {
 		}
 	}
 
-	// Méthode d'accès au singleton
+	// Mï¿½thode d'accï¿½s au singleton
 	public static Connection getInstance() {
 		if (connect == null)
-			instance = new HsqldbConnection();
+			new HsqldbConnection();
 
 		return connect;
 	}

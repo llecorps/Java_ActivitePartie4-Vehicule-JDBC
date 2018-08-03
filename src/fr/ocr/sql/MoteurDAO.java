@@ -1,14 +1,10 @@
 package fr.ocr.sql;
 
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import voiture.Vehicule;
 import voiture.moteur.Moteur;
-import voiture.moteur.TypeMoteur;
 import voiture.option.Option;
 
 public class MoteurDAO extends DAO<Moteur> {

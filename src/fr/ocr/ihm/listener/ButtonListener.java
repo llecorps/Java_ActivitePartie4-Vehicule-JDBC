@@ -1,16 +1,10 @@
 package fr.ocr.ihm.listener;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.TableModel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +13,6 @@ import fr.ocr.ihm.Garage;
 import fr.ocr.observer.Observable;
 import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAO;
-import fr.ocr.sql.DAOTableFactory;
 import fr.ocr.sql.DatabaseTable;
 import fr.ocr.sql.HsqldbConnection;
 import fr.ocr.sql.VehiculeDAO;

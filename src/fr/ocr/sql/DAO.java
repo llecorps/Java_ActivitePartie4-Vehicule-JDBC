@@ -3,8 +3,6 @@ package fr.ocr.sql;
 import java.sql.Connection;
 import java.util.List;
 
-import fr.ocr.sql.HsqldbConnection;
-import voiture.Vehicule;
 import voiture.option.Option;
 
 public abstract class DAO<T> {

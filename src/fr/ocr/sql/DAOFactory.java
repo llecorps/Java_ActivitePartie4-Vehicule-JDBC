@@ -3,6 +3,7 @@ package fr.ocr.sql;
 import java.sql.Connection;
 
 import voiture.Marque;
+import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.option.Option;
 
@@ -10,7 +11,7 @@ import voiture.option.Option;
 public class DAOFactory {
 protected static final Connection conn = HsqldbConnection.getInstance();   
  
-public static DAO getClasseDAO(){
+public static DAO<Vehicule> getClasseDAO(){
   return new VehiculeDAO(conn);
 }
 

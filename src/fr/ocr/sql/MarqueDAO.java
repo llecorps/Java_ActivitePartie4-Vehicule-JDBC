@@ -1,14 +1,10 @@
 package fr.ocr.sql;
 
-import java.awt.List;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import voiture.Marque;
-import voiture.Vehicule;
-import voiture.moteur.Moteur;
 import voiture.option.Option;
 
 public class MarqueDAO extends DAO<Marque> {
