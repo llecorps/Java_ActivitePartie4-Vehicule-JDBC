@@ -9,7 +9,7 @@ import voiture.option.Option;
 
 
 public class DAOFactory {
-protected static final Connection conn = HsqldbConnection.getInstance();   
+protected static Connection conn = HsqldbConnection.getInstance();   
  
 public static DAO<Vehicule> getClasseDAO(){
   return new VehiculeDAO(conn);

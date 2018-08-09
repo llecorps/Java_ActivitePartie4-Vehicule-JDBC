@@ -12,7 +12,9 @@ public class ViewDetailVehiculeListener extends ButtonListener {
 	private static int idV ;
 	
 	
-
+/**
+ * Méthode qui affiche les détails du vehicule.
+ */
 	public void actionPerformed(ActionEvent e) {
 		
 		idV = Integer.valueOf((String)table.getValueAt(row,this.column-1));

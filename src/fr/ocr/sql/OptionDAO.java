@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 import voiture.option.Option;
 
 public class OptionDAO extends DAO<Option> {
-	private static final Logger logger = LogManager.getLogger();
+	private Logger logger = LogManager.getLogger();
 	public OptionDAO(Connection conn) {
 		super(conn);
 	}

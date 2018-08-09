@@ -24,9 +24,9 @@ import fr.ocr.sql.HsqldbConnection;
 public class Garage extends JFrame implements Observateur {
 
 
-		//Les diff�rents objets de notre IHM
+		//Les différents objets de notre IHM
 	//-- Les logs
-		private static final Logger logger = LogManager.getLogger();
+		private Logger logger = LogManager.getLogger();
 	
 	private JMenuBar bar = new JMenuBar();
 	private JMenu menuVehicule = new JMenu("Vehicule");

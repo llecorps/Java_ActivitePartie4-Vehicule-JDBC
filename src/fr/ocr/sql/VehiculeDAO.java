@@ -15,7 +15,7 @@ import voiture.option.Option;
 
 public class VehiculeDAO extends DAO<Vehicule> {
 
-	private static final Logger logger = LogManager.getLogger();
+	private Logger logger = LogManager.getLogger();
 	private List<Option> ListOptions = new ArrayList<Option>();
 
 	public VehiculeDAO(Connection conn) {

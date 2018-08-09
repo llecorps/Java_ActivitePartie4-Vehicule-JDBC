@@ -22,7 +22,7 @@ public class HsqldbConnection {
 		}
 	}
 
-	// M�thode d'acc�s au singleton
+	// Méthode d'acc�s au singleton
 	public static Connection getInstance() {
 		if (connect == null)
 			new HsqldbConnection();

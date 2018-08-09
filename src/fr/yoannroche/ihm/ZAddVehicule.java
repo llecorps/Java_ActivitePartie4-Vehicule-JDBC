@@ -37,13 +37,12 @@ import voiture.option.Option;
 public class ZAddVehicule extends JDialog {
 
 	private Vehicule vehicule;
-	private static final Logger logger = LogManager.getLogger();
+	private Logger logger = LogManager.getLogger();
 
 
 	private JComboBox<String> marque , moteurL ;
-	private JCheckBox optionL;
 	private JTextField nom  ;
-	JFormattedTextField prix = new JFormattedTextField(NumberFormat.getNumberInstance());
+	private JFormattedTextField prix = new JFormattedTextField(NumberFormat.getNumberInstance());
 	private JButton ok = new JButton ("OK");
 	private JButton cancel = new JButton ("CANCEL");
 	private List<Option> optionV = new ArrayList<Option>();
@@ -53,17 +52,16 @@ public class ZAddVehicule extends JDialog {
 
 
 
-	public ZAddVehicule(JFrame parent, String title, boolean modal,Vehicule vehicule,  Observable obs) {
+	public ZAddVehicule(JFrame parent, String title, boolean modal,Vehicule vehicule,Observable obs) {
 		super(parent,title,modal);
 		this.vehicule = vehicule;
 		this.setSize(new Dimension(650,315));
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.getContentPane().setBackground(Color.white);
-		this.initComponent(obs);
 	}
 
-	private void initComponent(final Observable obs) {
+	private void initComponent(Observable obs) {
 
 		try {
 
@@ -76,35 +74,36 @@ public class ZAddVehicule extends JDialog {
 			nom.setBackground(Color.white);
 			nom.setPreferredSize(new Dimension(150,40));
 			panVehicule.add(nom);
+			
 			JPanel panMarque = new JPanel();
 			panMarque.setBackground(Color.white);
 			panMarque.setPreferredSize(new Dimension(200,55));
 			panMarque.setBorder(BorderFactory.createLineBorder(Color.black));
-			final DAO<Marque> marqueDao = DAOFactory.getMarqueDAO();
+			DAO<Marque> marqueDao = DAOFactory.getMarqueDAO();
 			marque = new JComboBox<String>();
 			for(int i=0;i<3;i++) {
 				marque.addItem(marqueDao.find(i).getNom());
 			}
-
 			marque.setBorder(BorderFactory.createTitledBorder(" Marque du Vehicule "));
 			marque.setBackground(Color.white);
 			marque.setPreferredSize(new Dimension(170,40));
 			panMarque.add(marque);
+			
 			JPanel panMoteur = new JPanel();
 			panMoteur.setBackground(Color.white);
 			panMoteur.setPreferredSize(new Dimension(200,55));
 			panMoteur.setBorder(BorderFactory.createLineBorder(Color.black));
-			final DAO<Moteur> moteurDao = DAOFactory.getMoteurDAO();
+			DAO<Moteur> moteurDao = DAOFactory.getMoteurDAO();
 			moteurL = new JComboBox<String>();
 
 			for(int i =0;i<9;i++) {
 				moteurL.addItem(moteurDao.find(i).getCylindre());
 			}
-
 			moteurL.setBorder(BorderFactory.createTitledBorder(" Marque du Vehicule "));
 			moteurL.setBackground(Color.white);
 			moteurL.setPreferredSize(new Dimension(170,40));
 			panMoteur.add(moteurL);
+			
 			JPanel panPrix = new JPanel();
 			panPrix.setBackground(Color.white);
 			panPrix.setPreferredSize(new Dimension(280,55));
@@ -114,14 +113,15 @@ public class ZAddVehicule extends JDialog {
 			prix.setBackground(Color.white);
 			prix.setPreferredSize(new Dimension(250,40));
 			panPrix.add(prix);
-			final DAO<Option> optionDao = DAOFactory.getOptionDAO();
+			
+			DAO<Option> optionDao = DAOFactory.getOptionDAO();
 			JPanel panOption = new JPanel();
 			JPanel option = new JPanel();
-			final JCheckBox option1 = new JCheckBox(optionDao.find(0).getNom());
-			final JCheckBox option2 = new JCheckBox(optionDao.find(1).getNom());
-			final JCheckBox option3 = new JCheckBox(optionDao.find(2).getNom());
-			final JCheckBox option4 = new JCheckBox(optionDao.find(3).getNom());
-			final JCheckBox option5 = new JCheckBox(optionDao.find(4).getNom());
+			JCheckBox option1 = new JCheckBox(optionDao.find(0).getNom());
+			JCheckBox option2 = new JCheckBox(optionDao.find(1).getNom());
+			JCheckBox option3 = new JCheckBox(optionDao.find(2).getNom());
+			JCheckBox option4 = new JCheckBox(optionDao.find(3).getNom());
+			JCheckBox option5 = new JCheckBox(optionDao.find(4).getNom());
 			option.add(option1);
 			option.add(option2);
 			option.add(option3);
@@ -132,6 +132,7 @@ public class ZAddVehicule extends JDialog {
 			panOption.setBorder(BorderFactory.createLineBorder(Color.black));		
 			option.setPreferredSize(new Dimension(520,60));	    
 			option.setBorder(BorderFactory.createTitledBorder(" Options Disponibles "));
+			
 			cancel.setPreferredSize(new Dimension(100,30));
 			cancel.setBorder(BorderFactory.createLineBorder(Color.black));
 			cancel.setBackground(Color.getHSBColor(0.126f, 0.45f, 0.94f));

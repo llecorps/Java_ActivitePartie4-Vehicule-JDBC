@@ -30,8 +30,7 @@ public class ZViewVehicule extends JDialog{
 	private void initComponent() {
 		
 		try {
-		 
-			 
+		  
 		JPanel panView = new JPanel();
 		panView.setBackground(Color.getHSBColor(0.550f, 0.40f, 0.90f));
 		panView.setPreferredSize(new Dimension(200,55));
@@ -106,6 +105,8 @@ public class ZViewVehicule extends JDialog{
 		total.add(totalVehicule);
 		getContentPane().add(panView);
 		panView.add(nom);
+		
+		
 		JPanel espace1 = new JPanel();
 		espace1.setPreferredSize(new Dimension(40,15));
 		espace1.setBackground(Color.getHSBColor(0.550f, 0.30f, 0.80f));
@@ -117,10 +118,13 @@ public class ZViewVehicule extends JDialog{
 		espace2.setPreferredSize(new Dimension(40,15));
 		espace2.setBackground(Color.getHSBColor(0.550f, 0.30f, 0.80f));
 		espace2.setBorder(BorderFactory.createLineBorder(Color.black));
+		
 	    panView.add(espace2);
 		panView.add(prix);
 		panView.add(option);	
 		panView.add(total);
+		
+		
 		this.setVisible(true);
 		
 		

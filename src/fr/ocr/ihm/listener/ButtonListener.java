@@ -24,8 +24,8 @@ public class ButtonListener implements ActionListener,Observable {
 	protected int column, row, id;
 	protected JTable table;
 	DatabaseTable tableau;
-	private static int idV ;
-	private static final Logger logger = LogManager.getLogger();
+	private int idV ;
+	private Logger logger = LogManager.getLogger();
 	private ArrayList<Observateur> listObservateur = new ArrayList<Observateur>();
 	
 
@@ -42,6 +42,10 @@ public class ButtonListener implements ActionListener,Observable {
 		this.table = table;
 	}
 
+	/*
+	 * Méthode pour l'ajout d'un vehicule
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent event) {
 
 
