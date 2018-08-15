@@ -24,15 +24,15 @@ import fr.ocr.sql.HsqldbConnection;
 public class Garage extends JFrame implements Observateur {
 
 
-		//Les différents objets de notre IHM
+	//Les différents objets de notre IHM
 	//-- Les logs
-		private Logger logger = LogManager.getLogger();
-	
+	private Logger logger = LogManager.getLogger();
+
 	private JMenuBar bar = new JMenuBar();
 	private JMenu menuVehicule = new JMenu("Vehicule");
 	private JMenuItem menuVehiculeAjouter = new JMenuItem("Ajouter");
 	private JMenuItem menuVehiculeVoir = new JMenuItem("Voir");
-	
+
 	private JMenu menuListeOption = new JMenu("Option Vehicule");
 	private JMenuItem menuListeOptionVoir = new JMenuItem("Voir");
 
@@ -55,17 +55,11 @@ public class Garage extends JFrame implements Observateur {
 		this.setSize(800, 400);
 		// Données de notre tableau
 
-		this.getContentPane()
-				.add(new JScrollPane(DAOTableFactory.getTable(
-						HsqldbConnection.getInstance(), DatabaseTable.VEHICULE, this)),
-						BorderLayout.CENTER);
+		this.getContentPane().add(new JScrollPane(DAOTableFactory.getTable(HsqldbConnection.getInstance(), DatabaseTable.VEHICULE, this)), BorderLayout.CENTER);
 		this.setLocationRelativeTo(null);
-		
+
 		initMenu();
 		logger.info("Lancement du garage");	   
-		
-		
-
 	}
 
 	/**
@@ -75,38 +69,30 @@ public class Garage extends JFrame implements Observateur {
 		menuVehicule.add(menuVehiculeVoir);
 		menuVehicule.add(menuVehiculeAjouter);
 		menuVehiculeAjouter.addActionListener(new NewVehiculeListener(this));
-		menuVehiculeAjouter.setAccelerator(KeyStroke.getKeyStroke(
-				KeyEvent.VK_A, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_DOWN_MASK));
-		menuVehiculeVoir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,
-				KeyEvent.CTRL_MASK + KeyEvent.SHIFT_DOWN_MASK));
-		menuVehiculeVoir.addActionListener(new ViewMenuListener(this,
-				DatabaseTable.VEHICULE));
+		menuVehiculeAjouter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_DOWN_MASK));
+		menuVehiculeVoir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,KeyEvent.CTRL_MASK + KeyEvent.SHIFT_DOWN_MASK));
+		menuVehiculeVoir.addActionListener(new ViewMenuListener(this, DatabaseTable.VEHICULE));
 		menuVehicule.setMnemonic('v');
-		
+
 		menuListeOption.add(menuListeOptionVoir);
-		menuListeOptionVoir.addActionListener(new ViewMenuListener(this,
-				DatabaseTable.VEHICULE_OPTION));
-		
+		menuListeOptionVoir.addActionListener(new ViewMenuListener(this, DatabaseTable.VEHICULE_OPTION));
+
 
 		menuMarque.add(menuMarqueVoir);
 		menuMarque.setMnemonic('a');
-		menuMarqueVoir.addActionListener(new ViewMenuListener(this,
-				DatabaseTable.MARQUE));
+		menuMarqueVoir.addActionListener(new ViewMenuListener(this, DatabaseTable.MARQUE));
 
 		menuMoteur.add(menuMoteurVoir);
 		menuMoteur.setMnemonic('m');
-		menuMoteurVoir.addActionListener(new ViewMenuListener(this,
-				DatabaseTable.MOTEUR));
+		menuMoteurVoir.addActionListener(new ViewMenuListener(this, DatabaseTable.MOTEUR));
 
 		menuOption.add(menuOptionVoir);
 		menuOption.setMnemonic('o');
-		menuOptionVoir.addActionListener(new ViewMenuListener(this,
-				DatabaseTable.OPTION));
+		menuOptionVoir.addActionListener(new ViewMenuListener(this, DatabaseTable.OPTION));
 
 		menuTypemoteur.add(menuTypemoteurVoir);
 		menuTypemoteur.setMnemonic('t');
-		menuTypemoteurVoir.addActionListener(new ViewMenuListener(this,
-				DatabaseTable.TYPEMOTEUR));
+		menuTypemoteurVoir.addActionListener(new ViewMenuListener(this, DatabaseTable.TYPEMOTEUR));
 
 		bar.add(menuVehicule);
 		bar.add(menuListeOption);
@@ -114,29 +100,17 @@ public class Garage extends JFrame implements Observateur {
 		bar.add(menuMoteur);
 		bar.add(menuOption);
 		bar.add(menuTypemoteur);
-
-		
-		
 		this.setJMenuBar(bar);
 	}
-	  public static void main(String[] args) {
-			Garage g = new Garage();
-			g.setVisible(true);
-			
-			
-		}
-	  public void update() {
-		 
-		    	  menuVehicule.doClick();
-				  logger.info("Méthode update du pattern Observer");
-		       
-		  
-		  
-	  }
-	  
-
 	
-	  
-
+	public static void main(String[] args) {
+		Garage g = new Garage();
+		g.setVisible(true);
+	}
 	
+	@Override
+	public void update() {
+		menuVehiculeVoir.doClick();
+		logger.info("Méthode update du pattern Observer");
+	}
 }

@@ -25,6 +25,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import fr.ocr.observer.Observable;
+import fr.ocr.observer.Observateur;
 import fr.ocr.sql.DAO;
 import fr.ocr.sql.DAOFactory;
 import fr.ocr.sql.HsqldbConnection;
@@ -34,7 +35,16 @@ import voiture.Vehicule;
 import voiture.moteur.Moteur;
 import voiture.option.Option;
 
-public class ZAddVehicule extends JDialog {
+/**
+ * 
+ * @author Zorglub
+ *
+ */
+public class ZAddVehicule extends JDialog implements Observable {
+
+	private static final long serialVersionUID = 1L;
+
+	private ArrayList<Observateur> listObservateur = new ArrayList<Observateur>();
 
 	private Vehicule vehicule;
 	private Logger logger = LogManager.getLogger();
@@ -49,20 +59,41 @@ public class ZAddVehicule extends JDialog {
 	private int moteurID = 0;
 	private int marqueID = 0;
 
+	private DAO<Marque> marqueDao;
+	private DAO<Moteur> moteurDao;
+	private JCheckBox option1;
+	private JCheckBox option2;
+	private JCheckBox option3;
+	private JCheckBox option4;
+	private JCheckBox option5;
+	private DAO<Option> optionDao;
 
-
-
-	public ZAddVehicule(JFrame parent, String title, boolean modal,Vehicule vehicule,Observable obs) {
+	/**
+	 * Boite de dialogue pour ajouter un nouveau véhicule. Cette classe notifie d'autres composants l'ors de l'ajout de véhicule (pattern Observer).
+	 * 
+	 * Rq : On abonne l'observateur ici et on le prévient dès qu'on ajoute un nouveau véhicule.
+	 * 
+	 * @param parent
+	 * @param title
+	 * @param modal
+	 * @param vehicule
+	 * @param obs
+	 */
+	public ZAddVehicule(JFrame parent, String title, boolean modal,Vehicule vehicule, Observateur obs) {
 		super(parent,title,modal);
 		this.vehicule = vehicule;
 		this.setSize(new Dimension(650,315));
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.getContentPane().setBackground(Color.white);
+		
+		this.addObservateur(obs); //-- On abonne l'observateur
+		logger.debug("Observateur pour l'ajout = " + obs);
+		
+		initComponent();
 	}
 
-	private void initComponent(Observable obs) {
-
+	private void initComponent() {
 		try {
 
 			JPanel panVehicule = new JPanel();
@@ -79,7 +110,7 @@ public class ZAddVehicule extends JDialog {
 			panMarque.setBackground(Color.white);
 			panMarque.setPreferredSize(new Dimension(200,55));
 			panMarque.setBorder(BorderFactory.createLineBorder(Color.black));
-			DAO<Marque> marqueDao = DAOFactory.getMarqueDAO();
+			marqueDao = DAOFactory.getMarqueDAO();
 			marque = new JComboBox<String>();
 			for(int i=0;i<3;i++) {
 				marque.addItem(marqueDao.find(i).getNom());
@@ -93,7 +124,7 @@ public class ZAddVehicule extends JDialog {
 			panMoteur.setBackground(Color.white);
 			panMoteur.setPreferredSize(new Dimension(200,55));
 			panMoteur.setBorder(BorderFactory.createLineBorder(Color.black));
-			DAO<Moteur> moteurDao = DAOFactory.getMoteurDAO();
+			moteurDao = DAOFactory.getMoteurDAO();
 			moteurL = new JComboBox<String>();
 
 			for(int i =0;i<9;i++) {
@@ -114,14 +145,14 @@ public class ZAddVehicule extends JDialog {
 			prix.setPreferredSize(new Dimension(250,40));
 			panPrix.add(prix);
 			
-			DAO<Option> optionDao = DAOFactory.getOptionDAO();
+			optionDao = DAOFactory.getOptionDAO();
 			JPanel panOption = new JPanel();
 			JPanel option = new JPanel();
-			JCheckBox option1 = new JCheckBox(optionDao.find(0).getNom());
-			JCheckBox option2 = new JCheckBox(optionDao.find(1).getNom());
-			JCheckBox option3 = new JCheckBox(optionDao.find(2).getNom());
-			JCheckBox option4 = new JCheckBox(optionDao.find(3).getNom());
-			JCheckBox option5 = new JCheckBox(optionDao.find(4).getNom());
+			option1 = new JCheckBox(optionDao.find(0).getNom());
+			option2 = new JCheckBox(optionDao.find(1).getNom());
+			option3 = new JCheckBox(optionDao.find(2).getNom());
+			option4 = new JCheckBox(optionDao.find(3).getNom());
+			option5 = new JCheckBox(optionDao.find(4).getNom());
 			option.add(option1);
 			option.add(option2);
 			option.add(option3);
@@ -177,8 +208,8 @@ public class ZAddVehicule extends JDialog {
 
 						vehicule = vehiculeDao.create(vehicule);
 
-						obs.updateObservateur();   //Lancement de la méthode update de l'Observateur.
-
+						updateObservateur();   //Lancement de la méthode update de l'Observateur.
+						
 						setVisible(false);
 
 						logger.info("Option(s) ajoutée(s) au véhicule : " + optionV);
@@ -216,6 +247,23 @@ public class ZAddVehicule extends JDialog {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
+	}
+	
+	@Override
+	public void addObservateur(Observateur obs) {
+		this.listObservateur.add(obs);
+	}
+
+	@Override
+	public void delObservateur() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void updateObservateur() {
+		for(Observateur obs : this.listObservateur) {
+			obs.update();
+		}
 	}
 }
 

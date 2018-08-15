@@ -1,0 +1,167 @@
+19:57:14.042 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+20:14:32.508 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+20:14:50.056 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:14:50.057 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+20:14:50.057 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+20:18:58.628 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+20:23:30.600 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+20:25:07.438 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 119/nom :Zorglub mobile/prix : 30000.0/marque : PIGEOT/moteur : ELECTRIQUE 1000 Kw
+20:25:07.445 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:25:07.484 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+20:30:42.714 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+20:31:08.457 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 120/nom :Zorglub 2/prix : 30001.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+20:31:08.457 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:31:08.469 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+20:46:26.701 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+20:46:45.655 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 121/nom :Zorglub 3/prix : 30002.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+20:46:45.656 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:46:54.924 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 122/nom :Zorglub 3/prix : 30002.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+20:46:54.925 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:46:54.925 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:47:03.024 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 123/nom :Zorglub 3/prix : 30002.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+20:47:03.024 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:47:03.025 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:47:03.025 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:47:10.482 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 124/nom :Zorglub 3/prix : 30002.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+20:47:10.482 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:47:10.482 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:47:10.482 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:47:10.482 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:47:30.899 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 125/nom :Zorglub 3/prix : 30003.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+20:47:30.900 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:51:06.927 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+20:51:16.077 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:16.079 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 3                                                       
+20:51:18.798 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:18.798 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:18.799 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:18.799 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:18.800 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 3                                                       
+20:51:19.708 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:19.709 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:19.709 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:19.709 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 3                                                       
+20:51:20.586 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:20.587 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:20.587 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 3                                                       
+20:51:22.457 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:51:22.458 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 3                                                       
+20:51:27.600 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+20:51:39.413 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 126/nom :Zorglub 3/prix : 30003.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+20:52:41.183 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+20:52:47.019 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+20:52:58.270 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 126/nom :Zorglub 3/prix : 30003.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+20:52:58.343 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+20:52:58.353 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+20:53:09.288 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 3                                                       
+20:53:12.581 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+20:53:34.814 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 127/nom :Zorglub 4/prix : 30004.0/marque : TROEN/moteur : HYBRIDE Essence/Nucléaire
+20:53:34.814 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:53:34.815 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:53:34.815 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:53:34.815 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:53:34.815 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+20:53:34.887 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+20:53:34.896 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+20:53:46.679 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+20:53:46.680 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+20:53:46.680 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+20:53:46.680 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+20:53:46.681 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 4
+08:12:31.140 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+08:12:50.295 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+08:13:27.403 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 128/nom :Zorglub 5/prix : 30005.0/marque : TROEN/moteur : DIESEL 250 Hdi
+08:13:27.407 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+08:13:27.427 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+08:13:27.531 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+08:13:27.559 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+08:16:00.370 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+08:16:00.370 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+08:16:00.370 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 5                                                       
+08:16:57.738 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,534,333,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+08:17:26.367 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : null
+09:53:52.276 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+09:53:54.267 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+09:53:54.269 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+09:53:54.270 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+09:53:54.270 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+09:53:54.270 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 4
+09:53:54.270 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 4                                                       
+09:54:05.606 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,475,263,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+09:54:16.727 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 129/nom :Zorglub 3/prix : 30003.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+09:54:16.727 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+09:54:16.809 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+09:54:16.809 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+09:54:20.538 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+09:54:20.547 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 3                                                       
+09:54:28.082 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+09:54:36.440 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+10:10:08.902 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Lancement du garage
+10:10:13.969 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+10:10:13.984 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 2                                                       
+10:10:14.071 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+10:10:18.503 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+10:10:18.516 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub mobile                                                  
+10:10:18.585 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+10:10:20.321 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+10:10:34.956 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 130/nom :Zorglub 1/prix : 30001.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+10:10:34.956 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:10:34.960 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:10:34.960 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:10:34.960 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:10:34.960 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:10:35.028 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+10:10:35.044 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+10:10:36.852 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+10:10:36.862 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+10:10:36.862 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+10:10:36.862 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+10:10:36.863 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 4
+10:10:36.863 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 1                                                       
+10:10:36.933 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+10:10:39.754 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+10:11:01.799 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 131/nom :Zorglub 1/prix : 30001.0/marque : RENO/moteur : ESSENCE 150 Chevaux
+10:11:01.800 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:11:01.870 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+10:11:01.870 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+10:11:03.608 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+10:11:15.609 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 132/nom :Zorglub 2/prix : 30002.0/marque : PIGEOT/moteur : ESSENCE 200 Chevaux
+10:11:15.609 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:11:15.687 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+10:11:15.687 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+10:11:17.647 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+10:11:20.377 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+10:11:25.818 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+10:11:30.649 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+10:11:44.861 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 133/nom :Zorglub 3/prix : 30003.0/marque : TROEN/moteur : DIESEL 150 Hdi
+10:11:44.861 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:11:44.939 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+10:11:44.939 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+10:11:46.759 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+10:11:54.320 [Garage v2.0] DEBUG fr.yoannroche.ihm.ZAddVehicule - Observateur pour l'ajout = fr.ocr.ihm.Garage[frame0,368,212,800x400,invalid,layout=java.awt.BorderLayout,title=JTable,resizable,normal,defaultCloseOperation=EXIT_ON_CLOSE,rootPane=javax.swing.JRootPane[,8,31,784x361,invalid,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+10:12:10.757 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Ajout de l'id : 134/nom :Zorglub 4/prix : 30004.0/marque : TROEN/moteur : HYBRIDE Essence/Nucléaire
+10:12:10.757 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:12:10.762 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:12:10.762 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:12:10.762 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:12:10.762 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Passage dans la boucle d'ajout option
+10:12:10.830 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer
+10:12:10.830 [Garage v2.0] INFO  fr.yoannroche.ihm.ZAddVehicule - Option(s) ajoutée(s) au véhicule : []
+10:12:11.947 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+10:12:11.954 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+10:12:11.954 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+10:12:11.954 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+10:12:11.954 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 4
+10:12:25.841 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+10:12:25.849 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+10:12:25.849 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+10:12:28.713 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+10:12:28.713 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 1
+10:12:28.723 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+10:12:28.723 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+10:12:28.724 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 4
+10:12:30.879 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 2
+10:12:30.889 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 3
+10:12:38.878 [Garage v2.0] INFO  fr.ocr.sql.VehiculeDAO - Récupération de l'option : 0
+10:12:38.878 [Garage v2.0] INFO  fr.ocr.ihm.listener.ButtonListener - Suppression du véhicule : Zorglub 1                                                       
+10:12:38.952 [Garage v2.0] INFO  fr.ocr.ihm.Garage - Méthode update du pattern Observer

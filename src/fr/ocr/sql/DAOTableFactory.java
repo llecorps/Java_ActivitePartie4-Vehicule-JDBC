@@ -11,6 +11,7 @@ import javax.swing.JTable;
 
 import fr.ocr.ihm.ButtonEditor;
 import fr.ocr.ihm.ButtonRenderer;
+import fr.ocr.ihm.listener.ButtonListener;
 import fr.ocr.ihm.listener.ViewDetailVehiculeListener;
 import fr.ocr.observer.Observateur;
 
@@ -22,7 +23,7 @@ import fr.ocr.observer.Observateur;
  */
 public class DAOTableFactory {
 
-	public static JTable getTable(Connection conn, DatabaseTable table, Observateur frame) {
+	public static JTable getTable(Connection conn, DatabaseTable table, Observateur obs) {
 		JTable tab = new JTable();
 
 		try (
@@ -34,8 +35,8 @@ public class DAOTableFactory {
 			ResultSetMetaData resultMeta = result.getMetaData();
 			int nbreColumn = resultMeta.getColumnCount();
 			
-			// Pour r�cup�rer le nombre total de ligne
-			// on se place sur la derni�re puis on revient avant la premi�re
+			// Pour récupérer le nombre total de ligne
+			// on se place sur la dernière puis on revient avant la premi�re
 			// pour parcourir
 			result.last();
 			int nbreRow = result.getRow();
@@ -77,15 +78,10 @@ public class DAOTableFactory {
 			 * On affiche les boutons uniquement pour la table v�hicule
 			 */
 			if (table.equals(DatabaseTable.VEHICULE)) {
-				tab.getColumn("ACTION").setCellRenderer(
-						new ButtonRenderer("SUPPRIMER"));
-				tab.getColumn("ACTION").setCellEditor(
-						new ButtonEditor(new JCheckBox(), "SUPPRIMER"));
-				tab.getColumn("DETAIL").setCellRenderer(
-						new ButtonRenderer("DETAIL"));
-				tab.getColumn("DETAIL").setCellEditor(
-						new ButtonEditor(new JCheckBox(), "DETAIL",
-								new ViewDetailVehiculeListener()));
+				tab.getColumn("ACTION").setCellRenderer(new ButtonRenderer("SUPPRIMER"));
+				tab.getColumn("ACTION").setCellEditor(new ButtonEditor(new JCheckBox(), "SUPPRIMER", new ButtonListener(), obs));
+				tab.getColumn("DETAIL").setCellRenderer(new ButtonRenderer("DETAIL"));
+				tab.getColumn("DETAIL").setCellEditor(new ButtonEditor(new JCheckBox(), "DETAIL", new ViewDetailVehiculeListener()));
 			}
 			tab.setRowHeight(30);
 		} catch (SQLException e) {

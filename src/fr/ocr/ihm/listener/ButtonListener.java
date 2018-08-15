@@ -19,8 +19,7 @@ import fr.ocr.sql.VehiculeDAO;
 import voiture.Vehicule;
 
 //Notre listener pour le bouton
-public class ButtonListener implements ActionListener,Observable {
-	Garage g;
+public class ButtonListener implements ActionListener, Observable {
 	protected int column, row, id;
 	protected JTable table;
 	DatabaseTable tableau;
@@ -54,7 +53,7 @@ public class ButtonListener implements ActionListener,Observable {
 		Vehicule vehicule = vehiculeDao.find(idV) ;
 		logger.info("Suppression du véhicule : "+vehicule.getNom());
 			vehiculeDao.delete(vehicule);
-           updateObservateur();
+        updateObservateur();
 			
 
 	}
