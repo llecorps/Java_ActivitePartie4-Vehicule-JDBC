@@ -8,16 +8,20 @@ import javax.swing.JCheckBox;
 import javax.swing.JTable;
 
 import fr.ocr.ihm.listener.ButtonListener;
+import fr.ocr.observer.Observateur;
+
 /**
- * Classe permettant de d�finir les comportements
+ * Classe permettant de définir les comportements
  * des boutons du JTable 
  * @author cysboy
  */
 public class ButtonEditor extends DefaultCellEditor {
 
+	private static final long serialVersionUID = 1L;
 	protected JButton button;
 	private ButtonListener bListener;
 	private String title = "";
+	protected Observateur obs;
 
 	// Constructeur avec une CheckBox
 	public ButtonEditor(JCheckBox checkBox, String t) {
@@ -33,7 +37,7 @@ public class ButtonEditor extends DefaultCellEditor {
 	}
 
 	public ButtonEditor(JCheckBox checkBox, String t, ButtonListener l) {
-		// Par d�faut, ce type d'objet travaille avec un JCheckBox
+		// Par défaut, ce type d'objet travaille avec un JCheckBox
 		super(checkBox);
 		// On cr�e � nouveau un bouton
 		button = new JButton();
@@ -44,14 +48,35 @@ public class ButtonEditor extends DefaultCellEditor {
 		title = t;
 	}
 
-	public Component getTableCellEditorComponent(JTable table, Object value,
-			boolean isSelected, int row, int column) {
+	/**
+	 * Appel 
+	 * @param checkBox
+	 * @param t
+	 * @param l
+	 */
+	public ButtonEditor(JCheckBox checkBox, String t, ButtonListener l, Observateur obs) {
+		// Par défaut, ce type d'objet travaille avec un JCheckBox
+		super(checkBox);
+		// On crée à nouveau un bouton
+		button = new JButton();
+		button.setOpaque(true);
+		// On lui attribue un listener
+		bListener = l;
+		button.addActionListener(bListener);
+		title = t;
+		
+		this.obs = obs;
+	}
+	
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		// On pr�cise le num�ro de ligne � notre listener
 		bListener.setRow(row);
 		// Idem pour le num�ro de colonne
 		bListener.setColumn(column);
 		// On passe aussi le tableau en param�tre pour des actions potentielles
 		bListener.setTable(table);
+
+		bListener.addObservateur(obs); //-- L'observateur
 
 		// On r�affecte le libell� au bouton
 		button.setText(title);
